@@ -7,9 +7,8 @@ const Footer = () => {
                 <Informação>Informações sobre</Informação>
                 <Informação>Informações sobre</Informação>
                 <Informação>Informações sobre</Informação>
-                <h1>Teste merge fork</h1>
             </ListaInformações>
-            <ImagemLogo src="../../../public/images/img-logo.png"/>
+            <ImagemLogo src="images/img-logo.png"/>
         </ContainerFooter>
     )
 }
