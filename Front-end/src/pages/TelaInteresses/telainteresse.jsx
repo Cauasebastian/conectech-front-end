@@ -1,11 +1,15 @@
 import { DivTelaInteresses, DivTextos, ListaInteresses, TituloPrincipal, TituloSecundario, FormPesquisar, InputPesquisar, ItemInteresse } from "./style";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Botao from '../../components/Botao'
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom'
+import ImagemLogo from "../../components/ImagemLogo";
 
 const TelaInteresses = () => {
     const [meusInteresses, setMeusInteresses] = useState([])
+    const navigate = useNavigate();
+    
 
     const manipulaInteresse = (interesse) => {
         
@@ -24,6 +28,7 @@ const TelaInteresses = () => {
     const enviarInteresses = () =>{
         alert("Seus interesses escolhidos são: " + meusInteresses.join(", "));
         setMeusInteresses([])
+        navigate('/home')
     }
     
     
@@ -80,7 +85,9 @@ const TelaInteresses = () => {
       
     return(
         <>
-            <Header position='fixed' widthLogo='3.5rem' justifyContent='center' caminhoImagem='images/img-conectech.svg'/>
+            <Header position='fixed'  justifyContent='center' >
+                <ImagemLogo widthLogo='3.3rem' caminhoImagem='images/img-ico.svg'/>
+            </Header>
             <DivTelaInteresses>
                 <DivTextos>
                     <TituloPrincipal>Quais são seus interesses?</TituloPrincipal>
