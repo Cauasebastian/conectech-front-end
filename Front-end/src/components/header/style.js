@@ -30,6 +30,11 @@ export const ListaItensHeader = styled.div`
     @media (max-width: 900px){
         gap: 2rem;
     }
+
+    @media(max-width: 686px){
+        display: none;
+    }
+    
     
 `
 
@@ -53,7 +58,7 @@ export const ItemHeader = styled.a`
 export const BotaoHamburguer = styled.button`
     width: 2.5rem;
     height: 2.5rem;
-    font-size: 1.5rem;
+    
     align-items: flex-end;
     justify-content: center;
     border: none;
@@ -62,6 +67,11 @@ export const BotaoHamburguer = styled.button`
     cursor: pointer;
     transition: all 0.4s ease;
     display: none;
+
+    @media(max-width: 686px){
+        display: block;
+    }
+    
     
     
 `
