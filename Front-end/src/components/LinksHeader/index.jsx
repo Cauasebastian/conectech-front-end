@@ -4,10 +4,13 @@ import { ItemHeader } from "./style"
 
 const LinksHeader = ({children}) => {
     return(
-            <ItemHeader >
+            <ItemHeader>
                 {children}
             </ItemHeader>
     )
 }
 
-export default LinksHead
+
+export default LinksHeader
+
+
