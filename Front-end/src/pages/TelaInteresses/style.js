@@ -20,10 +20,11 @@ export const TituloPrincipal = styled.h2`
      font-family: "Montserrat", sans-serif;
      color: #F1F1F1;
      font-weight: 400;
-     font-size: 1rem;
+     font-size: 1.5rem;
 `
 export const TituloSecundario = styled.p`
     color: #B5B5B5;
+    font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     margin-top: -0.2rem;
 `
@@ -46,12 +47,18 @@ export const InputPesquisar = styled.input`
     outline: none;
     color: #000;
     font-size: 1rem;
-    
 
     &::placeholder{
         color: #A4A4A4;
         font-family: "Montserrat", sans-serif;
     }
+    
+    @media (max-width: 512px){
+        &::placeholder{
+            color: transparent;
+        }
+    }
+    
 
 `
 
