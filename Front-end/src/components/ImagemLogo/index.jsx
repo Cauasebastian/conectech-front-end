@@ -3,10 +3,10 @@
 import { ImagemLogoHeader } from './style'
 
 
-const ImagemLogo = ({ widthLogo, caminhoImagem, onclick}) => {
+const ImagemLogo = ({ widthLogo, caminhoImagem, onclick, position}) => {
    
     return(
-        <ImagemLogoHeader onClick={onclick} width={widthLogo} src={caminhoImagem}/>
+        <ImagemLogoHeader onClick={onclick}  position={position} width={widthLogo} src={caminhoImagem}/>
     )
 }
 

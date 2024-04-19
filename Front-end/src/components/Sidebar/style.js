@@ -15,6 +15,7 @@ export const IconsSidebar = {
         position: 'fixed',
         top: '2rem',
         left: '2rem',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: '#4A91A5'
     }
 }
