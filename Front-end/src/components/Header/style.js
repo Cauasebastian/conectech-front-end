@@ -9,8 +9,8 @@ export const HeaderDiv = styled.header`
     align-items: center;
     position:${props => props.position} ;
     z-index: 1000;
-    background-color: #003262;
-    border-bottom: 1px solid #074261;
+    background-color: ${props => props.bgColor || '#003262' };
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     
     
 `

@@ -1,10 +1,15 @@
 import Header from '../../components/Header'
+import ImagemLogo from '../../components/ImagemLogo'
+import Sidebar from '../../components/Sidebar'
 import './style'
 const Home = ()=>{
     return(
         <>
-             <Header caminhoImagem='images/img-conectech.svg' position='fixed' widthLogo='3.5rem' justifyContent='space-around'/>
-            <h2>Home</h2>
+            <Header bgColor='f3f3f3' justifyContent='space-between' position='fixed'>
+                <Sidebar/>
+                <ImagemLogo caminhoImagem='images/img-logo-pree.png'/>
+            </Header>
+           
         </>
        
     )
