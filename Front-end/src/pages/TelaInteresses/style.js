@@ -8,6 +8,9 @@ export const DivTelaInteresses = styled.div`
     flex-direction: column;
     height: 100%;
     margin-top: 3rem;
+    @media (min-width: 1400px) {
+        height: 100vh;
+    }
 `
 export const DivTextos = styled.div`
     display: flex;
