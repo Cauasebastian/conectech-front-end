@@ -17,12 +17,12 @@ const Sidebar = () => {
         <DivSidebar sidebarOn={sidebar}>
 
             {sidebar 
-                ? <CloseRoundedIcon onClick={showSidebar} sx={IconsSidebar.iconMenu}/>
-                : <MenuRoundedIcon  onClick={showSidebar} sx={IconsSidebar.iconMenu}/>}
+                ? <CloseRoundedIcon sx={IconsSidebar.iconMenu}  onClick={showSidebar} />
+                : <MenuRoundedIcon sx={IconsSidebar.iconMenu}  onClick={showSidebar} />}
             <DivIcons>
                 <ItemSidebar>
                     <ForumOutlinedIcon sx={IconsSidebar.iconsItens} />
-                    <TextItemSidebar sidebarOn={sidebar}>Eventos</TextItemSidebar>
+                    <TextItemSidebar sidebarOn={sidebar}>Fórum</TextItemSidebar>
                 </ItemSidebar>
                 <ItemSidebar>
                     <BookmarkBorderOutlinedIcon sx={IconsSidebar.iconsItens}/>
@@ -34,7 +34,7 @@ const Sidebar = () => {
                 </ItemSidebar>
                 <ItemSidebar>
                     <EventOutlinedIcon sx={IconsSidebar.iconsItens}/>
-                    <TextItemSidebar sidebarOn={sidebar}>Fórum</TextItemSidebar>
+                    <TextItemSidebar sidebarOn={sidebar}>Eventos</TextItemSidebar>
                 </ItemSidebar>
             </DivIcons>
 

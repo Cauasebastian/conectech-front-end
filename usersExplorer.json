@@ -1,0 +1,20 @@
+[
+    {
+        "idUser": 1,
+        "fotoPerfil": "images/img-user.jpg",
+        "nome": "Felipe Oliveira",
+        "tags":["JavaScript", "React", "Tailwind"]
+    },
+    {
+        "idUser": 2,
+        "fotoPerfil": "images/img-user.jpg",
+        "nome": "Lara Nunes",
+        "tags":["JavaScript", "React", "Tailwind"]
+    },
+    {
+        "idUser": 3,
+        "fotoPerfil": "images/img-user.jpg",
+        "nome": "Larinha Linda",
+        "tags":["JavaScript", "React", "Tailwind"]
+    }
+]
