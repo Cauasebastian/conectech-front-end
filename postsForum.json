@@ -1,0 +1,23 @@
+[
+    {
+        "imagemPerfil": "/images/img-user.jpg",
+        "nomeUsuario":"Felipe Oliveira",
+        "tagPost": "JavaScript",
+        "descricaoPost": "Como armazenar dados no Local Storage? Preciso da resposta o quanto antes, se alguém souber...",
+        "imgPost":""
+    },
+    {
+        "imagemPerfil": "/images/img-user.jpg",
+        "nomeUsuario":"Felipe Oliveira",
+        "tagPost": "JavaScript",
+        "descricaoPost": "Como armazenar dados no Local Storage:",
+        "imgPost":"/images/img-post.png"
+    },
+    {
+        "imagemPerfil": "/images/img-user.jpg",
+        "nomeUsuario":"Felipe Oliveira",
+        "tagPost": "JavaScript",
+        "descricaoPost": "Como armazenar dados no Local Storage? Preciso da resposta o quanto antes, se alguém souber...",
+        "imgPost":"/images/img-post.png"
+    }
+]

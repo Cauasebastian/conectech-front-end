@@ -6,6 +6,7 @@ import './style'
 import DivHome from '../../components/DivHome'
 import EventosProximos from '../../components/EventosProximos'
 import MenuExplorar from '../../components/MenuExplorar'
+import DestaquesForum from '../../components/DestaquesForum'
 const Home = ()=>{
     return(
         <>
@@ -17,6 +18,7 @@ const Home = ()=>{
             <DivHome>
                 <EventosProximos/>
                 <MenuExplorar/>
+                <DestaquesForum/>
             </DivHome>
            
         </>

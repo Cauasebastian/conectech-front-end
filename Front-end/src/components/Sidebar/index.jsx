@@ -8,9 +8,15 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 
 const Sidebar = () => {
     
+    const navigate = useNavigate();
+    const goToPage = (page) => {
+        navigate(page)
+    }
+ 
     const [sidebar, setSidebar] = useState(false)   
     const showSidebar = () => setSidebar(!sidebar) 
     return(
@@ -20,21 +26,21 @@ const Sidebar = () => {
                 ? <CloseRoundedIcon sx={IconsSidebar.iconMenu}  onClick={showSidebar} />
                 : <MenuRoundedIcon sx={IconsSidebar.iconMenu}  onClick={showSidebar} />}
             <DivIcons>
-                <ItemSidebar>
+                <ItemSidebar onClick={() => {goToPage('/forum')}}>
                     <ForumOutlinedIcon sx={IconsSidebar.iconsItens} />
                     <TextItemSidebar sidebarOn={sidebar}>Fórum</TextItemSidebar>
                 </ItemSidebar>
-                <ItemSidebar>
-                    <BookmarkBorderOutlinedIcon sx={IconsSidebar.iconsItens}/>
-                    <TextItemSidebar sidebarOn={sidebar}>Favoritos</TextItemSidebar>
+                <ItemSidebar onClick={() => {goToPage('/favoritos')}}>
+                    <BookmarkBorderOutlinedIcon  sx={IconsSidebar.iconsItens}/>
+                    <TextItemSidebar  sidebarOn={sidebar}>Favoritos</TextItemSidebar>
                 </ItemSidebar>
-                <ItemSidebar>
+                <ItemSidebar onClick={() => {goToPage('/chat')}}>
                     <ChatBubbleOutlineOutlinedIcon sx={IconsSidebar.iconsItens}/>
-                    <TextItemSidebar sidebarOn={sidebar}>Chat</TextItemSidebar>
+                    <TextItemSidebar  sidebarOn={sidebar}>Chat</TextItemSidebar>
                 </ItemSidebar>
-                <ItemSidebar>
+                <ItemSidebar onClick={() => {goToPage('/eventos')}} >
                     <EventOutlinedIcon sx={IconsSidebar.iconsItens}/>
-                    <TextItemSidebar sidebarOn={sidebar}>Eventos</TextItemSidebar>
+                    <TextItemSidebar sidebarOn={sidebar} >Eventos</TextItemSidebar>
                 </ItemSidebar>
             </DivIcons>
 

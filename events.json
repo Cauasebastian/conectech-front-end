@@ -2,22 +2,85 @@
     {
         "id": 1,
         "image":"images/img-evento1.png",
-        "title": "Jornada de lógica de programação",
+        "title": "Java e Spring",
         "data": "Quarta, Mar 28 - 10:30 - 14:30",
-        "local": "Recife, PE - Brasil"
+        "local": "Recife, PE - Brasil",
+        "tema": "Back-End",
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
     },
     {
         "id": 2,
-        "image":"images/img-evento1.png",
+        "image":"images/img-tema-js.png",
         "title": "JavaScript: Do básico ao avançado",
         "data": "Quarta, Mar 28 - 10:30 - 14:30",
-        "local": "Recife, PE - Brasil"
+        "local": "Recife, PE - Brasil",
+        "tema": "Front-End", 
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
     },
     {
         "id": 3,
         "image":"images/img-evento1.png",
-        "title": "Python: Princípios básicos de aplicação",
+        "title": "Python e I.A",
         "data": "Quarta, Mar 28 - 10:30 - 14:30",
-        "local": "Recife, PE - Brasil"
+        "local": "Recife, PE - Brasil",
+        "tema": "Inteligência Artificial",
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
+    },
+    {
+        "id": 4,
+        "image":"images/img-tema-js.png",
+        "title": "JavaScript: Do básico ao avançado",
+        "data": "Quarta, Mar 28 - 10:30 - 14:30",
+        "local": "Recife, PE - Brasil",
+        "tema": "Front-End",
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
+    },
+    {
+        "id": 5,
+        "image":"images/img-tema-bc.png",
+        "title": "MySQL: aprendendo a usar",
+        "data": "Quarta, Mar 28 - 10:30 - 14:30",
+        "local": "Recife, PE - Brasil",
+        "tema": "Banco de Dados",
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
+    },
+    {
+        "id": 6,
+        "image":"images/img-evento1.png",
+        "title": "Angular vs React",
+        "data": "Quarta, Mar 28 - 10:30 - 14:30",
+        "local": "Recife, PE - Brasil",
+        "tema": "Front-End",
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
+    },
+    {
+        "id": 7,
+        "image":"images/img-evento1.png",
+        "title": "React e Redux",
+        "data": "Quarta, Mar 28 - 10:30 - 14:30",
+        "local": "Recife, PE - Brasil",
+        "tema": "Front-End",
+        "descricao": "Esse evento conta com a participação da desenvolvedora de SQL, Paula Vieira, onde ela apresentará os fundamentos, conceitos e passo a passo de como ultilizar o SQL.",
+        "organizador":"Lara Nunes",
+        "total_participantes": 24,
+        "foto_organizador": "images/img-user.jpg"
     }
 ]

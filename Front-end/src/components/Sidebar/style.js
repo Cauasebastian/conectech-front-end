@@ -36,6 +36,13 @@ export const DivIcons = styled.div`
     left: 2rem;
     top: 8rem;
     gap: 2.5rem;
+
+    @media (min-width: 1400px) {
+        
+        gap: 3rem;
+    }
+
+   
 `
 
 export const ItemSidebar = styled.div`
@@ -51,6 +58,11 @@ export const TextItemSidebar = styled.span`
     font-family: "Poppins", sans-serif;
     display: ${props => props.sidebarOn ? 'block' : 'none'};
     color: #074261;
+    cursor: pointer;
+
+    @media (min-width: 1400px) {
+        font-size: 1.1rem;
+    }
 `
 
 export const DivSettings = styled.div`
@@ -61,4 +73,10 @@ export const DivSettings = styled.div`
     border-top: 1px solid #CECECE;
     padding-top: 1rem;
     gap: 0.8rem;
+
+    @media (min-width: 1400px) {
+        top: 40rem;
+        
+        
+    }
 `

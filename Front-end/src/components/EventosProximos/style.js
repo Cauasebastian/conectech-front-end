@@ -6,11 +6,13 @@ export const ContainerEventos = styled.div`
     left: 8.5rem;
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
+    
 `
 export const DivEventos = styled.div`
     display: flex;
     gap: 1rem;
+    
 `
 
 export const TituloEventos = styled.h3`
@@ -20,9 +22,15 @@ export const TituloEventos = styled.h3`
 export const ItemEvento = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
+    
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius:15px ;
+    padding-bottom: 0.8rem;
+    cursor: pointer;
+    height: 18rem;
+    
 `
 export const ImgEvento = styled.img`
     height: 9rem;
@@ -30,6 +38,8 @@ export const ImgEvento = styled.img`
 export const TituloEvento = styled.p`
  font-family: "Poppins", sans-serif;
  font-weight: 700;
+ height: 3rem;
+ 
 `
 export const DataEvento = styled.span`
      font-family: "Poppins", sans-serif;
@@ -41,3 +51,14 @@ export const LocalEvento = styled.span`
      font-size: 1rem;
      color: #747688;
 `
+
+export const IconCarrossel = {
+    style:{
+        color: "#4A91A5",
+        position: "absolute",
+        left: "53rem",
+        top: "12rem",
+        cursor: "pointer" 
+
+    }
+}

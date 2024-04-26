@@ -1,15 +1,33 @@
 [
     {
-        "idGrupo": 1,
+        
         "fotoPerfilGrupo": "images/img-user.jpg",
         "nomeGrupo": "C++ básico",
         "tagsGrupo":["C++", "Lógica"]
     },
     {
-        "idGrupo": 2,
+        
         "fotoPerfilGrupo": "images/img-user.jpg",
         "nomeGrupo": "Python Avançado",
         "tagsGrupo":["Python", "I.A", "Lógica"]
+    },
+    {
+        
+        "fotoPerfilGrupo": "images/img-user.jpg",
+        "nomeGrupo": "C++ básico",
+        "tagsGrupo":["C++", "Lógica"]
+    },
+    {
+        
+        "fotoPerfilGrupo": "images/img-user.jpg",
+        "nomeGrupo": "C++ básico",
+        "tagsGrupo":["C++", "Lógica"]
+    },
+    {
+        
+        "fotoPerfilGrupo": "images/img-user.jpg",
+        "nomeGrupo": "C++ básico",
+        "tagsGrupo":["C++", "Lógica"]
     }
    
 ]

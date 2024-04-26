@@ -6,21 +6,20 @@ export const ContainerExplorar = styled.div`
     position: absolute;
     left: 63rem;
     top: 7rem;
-    z-index: -2;
+
+    @media (min-width: 1400px) {
+        left: 72rem;
+    }
     
 `
-
 export const TituloExplorar = styled.h3`
     
     font-family: "Poppins", sans-serif;
     color: #074261;
+    
 `
 
 export const ItensExplorar = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-export const UsuariosExplorar = styled.div`
 
 `
 
@@ -28,9 +27,7 @@ export const TituloItemExplorar = styled.h4`
     font-family: "Poppins", sans-serif;
     color: #074261;
 `
-export const GruposExplorar = styled.div`
 
-`
 export const DivItensExplorar = styled.div`
     display: flex;
     flex-direction: column;
@@ -44,6 +41,10 @@ export const ItemExplorar = styled.div`
     width: 18rem;
     justify-content: space-around;
     padding: 0.5rem 1rem;
+
+    @media (min-width: 1400px) {
+        width: 20rem;
+    }
     
     
 `
@@ -51,19 +52,12 @@ export const DivDadosItemExplorar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    
-    
-
-    
 `
 export const DivDadosPessoais = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 0.5rem;
-
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 `
 export const ImagemItemExplorar = styled.img`
     width: 2rem;
