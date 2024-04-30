@@ -59,6 +59,8 @@ export const TextItemSidebar = styled.span`
     display: ${props => props.sidebarOn ? 'block' : 'none'};
     color: #074261;
     cursor: pointer;
+    font-weight: ${props => props.localizacao ? '700' : '400'};
+    text-decoration: ${props => props.localizacao ? 'underline' : 'none'};
 
     @media (min-width: 1400px) {
         font-size: 1.1rem;
