@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import { HeaderDiv, } from './style'
 
-const Header = ({ position, children, justifyContent, bgColor})=> {
+
+const Header = ({children})=> {
     return(
         
-             <HeaderDiv justifyContent={justifyContent} bgColor={bgColor}  position={position}>
+             <div className="w-screen flex items-center p-5 md:justify-around justify-center gap-20 md:gap-0">
                     {children}
-            </HeaderDiv>
+            </div>
     )
 }
 

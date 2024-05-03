@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .conectech-button{
+        @apply rounded-3xl bg-[#0B7FBE] py-2.5 px-16 text-gray-50 font-poppins whitespace-nowrap
+    }
+}

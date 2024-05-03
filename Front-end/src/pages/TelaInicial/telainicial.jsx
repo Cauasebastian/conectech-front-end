@@ -5,9 +5,9 @@ import PartePrincipal from '../../components/PartePrincipalInicial'
 import ParteSecundaria from '../../components/ParteSecInicial'
 import Footer from '../../components/Footer'
 import {useNavigate} from 'react-router-dom'
-import Botao from '../../components/Botao'
-import DivLinksHeader from '../../components/DivLinksHeader'
-import { ItemHeader } from '../../components/LinksHeader/style'
+
+import LinksHeader from '../../components/LinksHeader'
+
 
 const TelaInicial = ()=> {
      const navigate = useNavigate()
@@ -19,22 +19,24 @@ const TelaInicial = ()=> {
      }
   
     return(
-        <TelaInicialDiv>
-            <Header position='fixed' justifyContent='space-evenly' >
+        <div className='flex flex-col bg-gradient-to-t from-[#010727] to-[#003363]'>
+            <Header >
                 <ImagemLogo onclick={() => {
                     navigate('/')
                 }} caminhoImagem='images/img-logo.png'/>
-                <DivLinksHeader>
-                    <ItemHeader >Como funciona</ItemHeader>
-                    <ItemHeader onClick={goToLoginPage}>Entrar</ItemHeader>
-                </DivLinksHeader>
+                <LinksHeader>
+                    <a href="">Como funciona</a>
+                    <a href="">Entrar</a>
+                </LinksHeader>
+                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block'>Vamos começar</button>
                
-                <Botao onClick={goToTelaCadastro}   nome="Vamos começar"/>
+                
             </Header>
             <PartePrincipal/>
             <ParteSecundaria/>
             <Footer/>
-        </TelaInicialDiv>
+            
+        </div>
     )
 }
 

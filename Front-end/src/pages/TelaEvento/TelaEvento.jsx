@@ -13,6 +13,7 @@ import { BotaoSeguir, DescricaoEvento, DivBotaoInscrever, DivCardOrganizadorEven
 const TelaEvento = () => {
   const location = useLocation();
   const navigate = useNavigate()
+ 
 
   const goToHomePage = () => {
     navigate('/home')

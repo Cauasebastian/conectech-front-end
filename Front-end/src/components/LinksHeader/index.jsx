@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import { ItemHeader } from "./style"
-
 const LinksHeader = ({children}) => {
     return(
-            <ItemHeader>
+            <div className="hidden md:flex font-poppins text-corTexto-100 items-center justify-center gap-20 whitespace-nowrap">
                 {children}
-            </ItemHeader>
+            </div>
     )
 }
 
