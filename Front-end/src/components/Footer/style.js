@@ -6,10 +6,14 @@ export const ContainerFooter = styled.footer`
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 5rem;
     width: 100vw;
     background-image: linear-gradient(#00132A  ,#015879);
     height: 20rem;
+    overflow-y: hidden;
+    
+  
+    
+   
 `
 
 export const ListaInformações = styled.div`
