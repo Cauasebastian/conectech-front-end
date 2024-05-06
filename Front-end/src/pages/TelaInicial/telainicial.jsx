@@ -19,8 +19,8 @@ const TelaInicial = ()=> {
      }
   
     return(
-        <div className='flex flex-col bg-gradient-to-t from-[#010727] to-[#003363]'>
-            <Header >
+        <div className='flex w-screen flex-col bg-gradient-to-t from-[#00001d] to-[#003d71]'>
+            <Header bgColor='bg-[#003d71]' >
                 <ImagemLogo onclick={() => {
                     navigate('/')
                 }} caminhoImagem='images/img-logo.png'/>
@@ -28,6 +28,7 @@ const TelaInicial = ()=> {
                     <a href="">Como funciona</a>
                     <a href="">Entrar</a>
                 </LinksHeader>
+                <a className='text-corTexto-100 text-lg flex sm:hidden fon' href="">Entrar</a>
                 <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block'>Vamos começar</button>
                
                 

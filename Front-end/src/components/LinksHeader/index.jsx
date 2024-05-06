@@ -2,7 +2,7 @@
 
 const LinksHeader = ({children}) => {
     return(
-            <div className="hidden md:flex font-poppins text-corTexto-100 items-center justify-center gap-20 whitespace-nowrap">
+            <div className="hidden lg:flex font-poppins text-corTexto-100 items-center justify-center gap-20 whitespace-nowrap">
                 {children}
             </div>
     )
