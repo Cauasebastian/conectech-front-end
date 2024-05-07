@@ -23,17 +23,17 @@ const TelaAboutUs = () => {
                             onClick={goToHomePage}
                             sx={{
                                 color:'#4A91A5',
-                                fontSize:'2.3rem',
+                                fontSize:'2.5rem',
                                 cursor: 'pointer'
                             }}
                             
                        />
                        <span className="font-poppins font-semibold text-[#363636] text-xl">Sobre Nós</span>
                     </div>
-                    <div className="ml-10 mt-20 grid grid-cols-2 grid-rows-2 w-10/12">
-                        <div className="border-l-[#074261] mb-20 ">
+                    <div className="ml-5 mt-20 grid grid-cols-3 w-10/12 gap-10 font-poppins">
+                        <div className="border-l-2 border-[#074261]  col-span-1 mb-20 flex flex-col gap-5 pl-3 font-poppins">
                             <h4 className="text-[#101010]  text-2xl">Integrantes</h4>
-                            <ul className="grid grid-cols-2">
+                            <ul className="grid grid-cols-2 font-poppins">
                                 <li>Lara Nunes</li>
                                 <li>Felipe Oliveira</li>
                                 <li>Caua Sebastian</li>
@@ -42,14 +42,14 @@ const TelaAboutUs = () => {
                                 <li>Thales Thiago</li>
                             </ul>
                         </div>
-                        <div className="border-l-[#074261] mb-20">
+                        <div className="mb-20 flex flex-col gap-5 col-span-2 border-l-2 border-l-[#074261] pl-3 ">
                             <h4 className="text-[#101010] text-2xl">Descrição</h4>
                             <p>O site do Conectech é um projeto criado pelos estudantes do curso de Sistemas
                             para internet da  niversidade Católica de Pernambuco. A plataforma foi criada
                             como um aplicativo e desenvolvida para desktop.
                             </p>
                         </div>
-                        <div className="border-l-[#074261] col-span-2 w-7/12">
+                        <div className="border-l-[#074261] col-span-3 flex flex-col gap-5 border-l-2 border-[#074261] pl-3 ">
                             <h4 className="text-[#101010] text-2xl">O que é o Conectech?</h4>
                             <p>O site Conectech é uma plataforma de networking e uma rede social onde os estudantes ou profissionais da área de tecnologia podem se conectar por meio de eventos criados na plataforma, tirar dúvidas e ver as últimas tendências do mercado da tecnologia através do fórum</p>
                         </div>

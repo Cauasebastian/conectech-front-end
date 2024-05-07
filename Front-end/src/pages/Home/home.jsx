@@ -10,9 +10,9 @@ import DestaquesForum from '../../components/DestaquesForum'
 const Home = ()=>{
     return(
         <>
-            <Header bgColor='#fff' justifyContent='space-between' position='fixed'>
+            <Header bgColor='#fff' gapMd='md:gap-[47rem]' >
                 <Sidebar/>
-                <ImagemLogo position='relative'  caminhoImagem='images/img-logo-pree.png'/>
+                <ImagemLogo caminhoImagem='images/img-logo-pree.png'/>
                 <IconUser/>
             </Header>
             <DivHome>

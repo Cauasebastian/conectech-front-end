@@ -1,4 +1,4 @@
-import { TelaInicialDiv } from './style'
+
 import Header from '../../components/Header'
 import ImagemLogo from '../../components/ImagemLogo'
 import PartePrincipal from '../../components/PartePrincipalInicial'
@@ -21,15 +21,15 @@ const TelaInicial = ()=> {
     return(
         <>
         <div className='flex w-screen overflow-x-hidden flex-col bg-gradient-to-t from-[#00001d] to-[#003d71]'>
-            <Header bgColor='bg-[#003d71]' >
+            <Header bgColor='bg-[#003d71]' gap='gap-20' gapMd='md:gap-0'>
                 <ImagemLogo onclick={() => {
                     navigate('/')
                 }} caminhoImagem='images/img-logo.png'/>
                 <LinksHeader>
                     <a href="">Como funciona</a>
-                    <a href="">Entrar</a>
+                    <a href="" onClick={goToLoginPage}>Entrar</a>
                 </LinksHeader>
-                <a className='text-corTexto-100 text-lg flex sm:hidden fon' href="">Entrar</a>
+                <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' href="">Entrar</a>
                 <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block'>Vamos começar</button>
                
                 

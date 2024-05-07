@@ -5,10 +5,10 @@ export const ImagemLogoHeader = styled.img`
     cursor: pointer;
     position: ${props => props.position};
     //left: ${props => props.left};
-    left: 36rem;
+    /* left: 36rem;
 
     @media (min-width:1400px ) {
         left: 45rem;
-    }
+    } */
     
 `

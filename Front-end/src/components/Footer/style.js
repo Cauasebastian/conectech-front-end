@@ -1,21 +1,5 @@
 import styled from 'styled-components'
 
-export const ContainerFooter = styled.footer`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100vw;
-    background-image: linear-gradient(#00132A  ,#015879);
-    height: 20rem;
-    overflow-y: hidden;
-    
-  
-    
-   
-`
-
 export const ListaInformações = styled.div`
     display: flex;
     width: 100%;
