@@ -5,6 +5,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { useState } from "react";
@@ -34,9 +35,9 @@ const Sidebar = () => {
                     <BookmarkBorderOutlinedIcon  sx={IconsSidebar.iconsItens}/>
                     <TextItemSidebar localizacao={location.pathname === '/favoritos'} sidebarOn={sidebar}>Favoritos</TextItemSidebar>
                 </ItemSidebar>
-                <ItemSidebar onClick={() => {goToPage('/chat')}}>
-                    <ChatBubbleOutlineOutlinedIcon sx={IconsSidebar.iconsItens}/>
-                    <TextItemSidebar localizacao={location.pathname === '/chat'} sidebarOn={sidebar}>Chat</TextItemSidebar>
+                <ItemSidebar onClick={() => {goToPage('/sobrenos')}}>
+                    <PeopleAltOutlinedIcon sx={IconsSidebar.iconsItens}/>
+                    <TextItemSidebar localizacao={location.pathname === '/sobrenos'} sidebarOn={sidebar}>Sobre Nós</TextItemSidebar>
                 </ItemSidebar>
                 <ItemSidebar onClick={() => {goToPage('/eventos')}} >
                     <EventOutlinedIcon sx={IconsSidebar.iconsItens}/>

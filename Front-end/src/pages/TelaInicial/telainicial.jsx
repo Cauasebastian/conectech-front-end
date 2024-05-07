@@ -19,6 +19,7 @@ const TelaInicial = ()=> {
      }
   
     return(
+        <>
         <div className='flex w-screen overflow-x-hidden flex-col bg-gradient-to-t from-[#00001d] to-[#003d71]'>
             <Header bgColor='bg-[#003d71]' >
                 <ImagemLogo onclick={() => {
@@ -38,6 +39,7 @@ const TelaInicial = ()=> {
             <Footer/>
             
         </div>
+        </>
     )
 }
 

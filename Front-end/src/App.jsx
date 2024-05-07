@@ -7,8 +7,8 @@ import TelaInteresses from './pages/TelaInteresses/telainteresse'
 import Eventos from './pages/Eventos/Eventos'
 import Favoritos from './pages/Favoritos/Favoritos'
 import Forum from './pages/Forum/Forum'
-import Chat from './pages/TelaChat/Chat'
 import TelaEvento from './pages/TelaEvento/TelaEvento'
+import TelaAboutUs from './pages/TelaAboutUs/AboutUs'
 
 function App() {
   
@@ -25,7 +25,7 @@ function App() {
             <Route path='/eventos' element={<Eventos/>}/>
             <Route path='/favoritos' element={<Favoritos/>}/>
             <Route path='/forum' element={<Forum/>}/>
-            <Route path='/chat' element={<Chat/>}/>
+            <Route path='/sobrenos' element={<TelaAboutUs/>}/>
             <Route path='/evento' element={<TelaEvento/>}/>
           </Routes>
         </BrowserRouter>
