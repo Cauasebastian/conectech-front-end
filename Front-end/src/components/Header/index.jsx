@@ -4,7 +4,7 @@
 const Header = ({children, bgColor, gap, gapMd})=> {
     return(
         
-             <div className={`w-screen ${bgColor} fixed z-40 flex items-center p-5 md:justify-around justify-around ${gap} ${gapMd}`}>
+             <div className={`w-screen ${bgColor} fixed z-40 flex items-center p-5 md:justify-around justify-around ${gap} ${gapMd} enormes:p-8 mobileP:w-full`}>
                     {children}
             </div>
     )
