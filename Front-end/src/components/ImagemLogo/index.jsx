@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 
-import { ImagemLogoHeader } from './style'
 
 
-const ImagemLogo = ({ widthLogo, caminhoImagem, onclick, position}) => {
+
+const ImagemLogo = ({ caminhoImagem, onclick}) => {
    
     return(
-        <ImagemLogoHeader onClick={onclick}  position={position} width={widthLogo} src={caminhoImagem}/>
+        <img onClick={onclick} src={caminhoImagem} className='w-36 cursor-pointer'/>
     )
 }
 

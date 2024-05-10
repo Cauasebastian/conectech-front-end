@@ -19,8 +19,8 @@ const TelaInicial = ()=> {
      }
   
     return(
-        <>
-        <div className='flex w-full overflow-x-hidden flex-col bg-gradient-to-t from-[#00001d] to-[#003d71] '>
+        
+        <div className=' overflow-x-hidden w-full h-full flex flex-col bg-gradient-to-t from-[#00001d] to-[#003d71] '>
             <Header bgColor='bg-[#003d71]' gap='gap-20' gapMd='md:gap-0'>
                 <ImagemLogo onclick={() => {
                     navigate('/')
@@ -30,7 +30,7 @@ const TelaInicial = ()=> {
                     <a href="" onClick={goToLoginPage}>Entrar</a>
                 </LinksHeader>
                 <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' href="">Entrar</a>
-                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block enormes:text-xl'>Vamos começar</button>
+                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block '>Vamos começar</button>
                
                 
             </Header>
@@ -39,7 +39,7 @@ const TelaInicial = ()=> {
             <Footer/>
             
         </div>
-        </>
+        
     )
 }
 

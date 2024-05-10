@@ -2,27 +2,27 @@
 
 const ParteSecundaria = () => {
     return(
-        <div className="mt-20 flex flex-col items-center justify-center enormes:mt-36 ">
-            <img className='-mb-72 enormes:w-3/5 enormes:-mb-80 notebook:-mb-64' src="/images/text-telainicial.svg" alt="" />
-        
-        <img className='w-[110vw]' src="/images/img-globo2.png" alt="" />
-        <div className='absolute flex gap-8 mt-40 enormes:gap-28 grandes:gap-24 normais:gap-20 '> 
-             <div className='card-telainicial'>
-                <img className='w-[13.7rem] enormes:w-[17rem] grandes:w-[14rem]' src="images/img-groups.png" alt="" />
-                <h3 className='font-medium m-4 enormes:font-semibold enormes:text-2xl grandes:font-semibold grandes:text-xl'>Grupos</h3>
-                <p className='mt-4 font-light enormes:text-lg enormes:font-normal grandes:text-lg grandes:font-normal'>Crie vínculos</p>
+        <div className=" mt-32 flex flex-col items-center justify-center w-screen ">
+            <img className='-mb-16 w-10/12' src="/images/text-telainicial.svg" alt="" />
+            
+            <img className='w-[100vw]' src="/images/img-globo2.png" alt="" />
+            <div className='absolute flex gap-3 w-6/12 h-1/5 mt-20'> 
+                <div className='flex flex-col  items-center text-center border-solid border border-[#fff] rounded-lg bg-[#7c7c7c59] shadow-[0_8px_32px_0_#1f26875e] backdrop-opacity-10 text-[#f3f3f3] font-poppins z-[2] w-4/12 h-3/4 p-1'>
+                    <img className=' h-10' src="images/img-groups.png" alt="" />
+                    <h3 className='text-xs mt-2'>Grupos</h3>
+                    <p className='mt-4 font-light hidden'>Crie vínculos reais</p>
+                </div>
+                <div className='flex flex-col  items-center text-center border-solid border border-[#fff] rounded-lg bg-[#7c7c7c59] shadow-[0_8px_32px_0_#1f26875e] backdrop-opacity-10 text-[#f3f3f3] font-poppins z-[2]  w-4/12 h-3/4 p-1'>
+                    <img className='h-10' src="images/img-foruns.png" alt="" />
+                    <h3 className='text-xs mt-2'>Fóruns</h3>
+                    <p className='mt-4 font-light hidden'>Discuta sobre temas</p>
+                </div>
+                <div className='flex flex-col  items-center text-center border-solid border border-[#fff] rounded-lg bg-[#7c7c7c59] shadow-[0_8px_32px_0_#1f26875e] backdrop-opacity-10 text-[#f3f3f3] font-poppins z-[2]  w-4/12 h-3/4 p-1'>
+                    <img className='h-10'src="images/img-events.png" alt="" />
+                    <h3 className='text-xs mt-2'>Eventos</h3>
+                    <p className='mt-4 font-light hidden'>Participe de eventos</p>
+                </div>
             </div>
-            <div className='card-telainicial'>
-                <img className='w-[13.7rem] enormes:w-[17rem] grandes:w-[14rem]' src="images/img-foruns.png" alt="" />
-                <h3 className='font-medium m-4 enormes:font-semibold enormes:text-2xl grandes:font-semibold grandes:text-xl'>Fóruns</h3>
-                <p className='mt-4 font-light enormes:text-lg enormes:font-normal grandes:text-lg grandes:font-normal'>Discuta sobre temas</p>
-            </div>
-            <div className='card-telainicial'>
-                <img className='w-[13.7rem] enormes:w-[17rem] grandes:w-[14rem]'src="images/img-events.png" alt="" />
-                <h3 className='font-medium m-4 enormes:font-semibold enormes:text-2xl grandes:font-semibold grandes:text-xl'>Eventos</h3>
-                <p className='mt-4 font-light enormes:text-lg enormes:font-normal grandes:text-lg grandes:font-normal'>Participe de eventos</p>
-            </div>
-        </div>
             
         </div>
     )

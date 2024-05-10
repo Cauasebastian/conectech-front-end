@@ -6,7 +6,7 @@
     .conectech-button{
         @apply rounded-3xl bg-[#0B7FBE] py-2.5 px-16 text-gray-50 font-poppins whitespace-nowrap
     }
-    .card-telainicial{
-        @apply flex flex-col justify-center items-center text-center border-solid border border-[#fff] p-2 rounded-lg bg-[#7c7c7c59] shadow-[0_8px_32px_0_#1f26875e] backdrop-opacity-10 text-[#f3f3f3] font-poppins pb-8 z-[2]
-    }
+   
+    
+   
 }
