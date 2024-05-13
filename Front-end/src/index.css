@@ -7,6 +7,9 @@
         @apply rounded-3xl bg-[#0B7FBE] py-2.5 px-16 text-gray-50 font-poppins whitespace-nowrap
     }
    
+    .fundo-form{
+        @apply flex flex-col justify-center items-center border border-[#f3f3f3] rounded-xl bg-[#7c7c7c59] shadow-[0_8px_32px_0_#1f26875e] backdrop-opacity-10
+    }
     
    
 }

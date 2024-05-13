@@ -7,7 +7,7 @@ import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded
 // import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 // import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import {useNavigate} from 'react-router-dom'
-import data from '../../../../events.json'
+import data from '../../../events.json'
 import Evento from "../../components/Evento"
 
 const Eventos = () => {

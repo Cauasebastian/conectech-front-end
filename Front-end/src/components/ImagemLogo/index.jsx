@@ -6,7 +6,7 @@
 const ImagemLogo = ({ caminhoImagem, onclick}) => {
    
     return(
-        <img onClick={onclick} src={caminhoImagem} className='w-36 cursor-pointer'/>
+        <img onClick={onclick} src={caminhoImagem} className='w-36 cursor-pointer maiores:w-44'/>
     )
 }
 

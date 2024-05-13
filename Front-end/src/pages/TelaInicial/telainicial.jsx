@@ -5,6 +5,7 @@ import PartePrincipal from '../../components/PartePrincipalInicial'
 import ParteSecundaria from '../../components/ParteSecInicial'
 import Footer from '../../components/Footer'
 import {useNavigate} from 'react-router-dom'
+import { Link } from 'react-scroll'
 
 import LinksHeader from '../../components/LinksHeader'
 
@@ -26,11 +27,11 @@ const TelaInicial = ()=> {
                     navigate('/')
                 }} caminhoImagem='images/img-logo.png'/>
                 <LinksHeader>
-                    <a href="">Como funciona</a>
+                    <Link className='cursor-pointer' to='como-funciona' spy={true} smooth={true} offset={-100} duration={500}>Como funciona</Link>
                     <a href="" onClick={goToLoginPage}>Entrar</a>
                 </LinksHeader>
                 <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' href="">Entrar</a>
-                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block '>Vamos começar</button>
+                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block 3xl:text-xl '>Vamos começar</button>
                
                 
             </Header>

@@ -1,6 +1,6 @@
 import { ContainerExplorar, TituloExplorar,   TituloItemExplorar,  ItemExplorar, DivDadosItemExplorar, DivDadosPessoais, ImagemItemExplorar, NomeItemExplorar, IconAdd, DivItensExplorar, DivTags, ItemTag, ItensExplorar } from "./style"
-import dataUser from '../../../../usersExplorer.json'
-import dataGroup from '../../../../groupsExplorer.json'
+import dataUser from '../../../usersExplorer.json'
+import dataGroup from '../../../groupsExplorer.json'
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import { useState } from "react";

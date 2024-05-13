@@ -1,5 +1,5 @@
 import { BotaoVerMais, ContainerDestaquesForum, DescPostDestaques, DivComentarios, DivCurtidas, DivInteracoes,  DivPostsDestaquesForum, HeaderDestaques, IconsPost, ImagemPerfilPostDestaques, ImagemPostDestaques, NomeUserPostDestaques, NumeroComentarios, NumeroCurtidas, ParteInferiorPost, ParteSuperiorPost, PostDestaques, TagPostDestaques, TituloDestaques } from "./style"
-import dataPost from "../../../../postsForum.json"
+import dataPost from "../../../postsForum.json"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';

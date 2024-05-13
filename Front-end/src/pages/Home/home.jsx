@@ -10,7 +10,7 @@ import DestaquesForum from '../../components/DestaquesForum'
 const Home = ()=>{
     return(
         <>
-            <Header bgColor='#fff' gapMd='md:gap-[47rem]' >
+            <Header bgColor='bg-[#fff]' gapMd='md:gap-[47rem]' >
                 <Sidebar/>
                 <ImagemLogo caminhoImagem='images/img-logo-pree.png'/>
                 <IconUser/>

@@ -14,6 +14,12 @@ export default {
         100: '#F4F4F4'
       }
      },
+     screens:{
+      '3xl':'2000px',
+      'mp': '320px',
+      'mm': '450px',
+      'mg': '540px'
+     }
     },
   },
   plugins: [],

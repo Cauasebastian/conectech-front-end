@@ -1,5 +1,5 @@
 import { ContainerEventos, DivEventos, TituloEventos } from "./style"
-import data from '../../../../events.json'
+import data from '../../../events.json'
 import { register } from 'swiper/element/bundle';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
