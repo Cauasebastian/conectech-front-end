@@ -19,7 +19,7 @@ function App() {
         <BrowserRouter>
         <UserProvider>
           <Routes>
-              <Route path='' element={<TelaInicial/>}/>
+              <Route path='/' element={<TelaInicial/>}/>
               <Route path='/home' element={<Home/>}/>
               <Route path='/login' element={<TelaLogin/>}/>
               <Route path='/cadastro' element={<TelaCadastro/>}/>

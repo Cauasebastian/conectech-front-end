@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { ItemBotao, TextoBotao } from "./style"
 
 
 
-const Botao = ({nome, link, padding, onClick, display, type}) => {
+
+const Botao = ({nome, link,  onClick, display, type}) => {
     return(
-        <ItemBotao type={type} display={display} onClick={onClick} padding={padding}>
-            <TextoBotao  href={link}>{nome}</TextoBotao>
-        </ItemBotao>
+        <button type={type} display={display} onClick={onClick} className="conectech-button" >
+            <a  href={link}>{nome}</a>
+        </button>
     )
 }
 

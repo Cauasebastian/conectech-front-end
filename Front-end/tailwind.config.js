@@ -17,7 +17,7 @@ export default {
      screens:{
       '3xl':'2000px',
       'mp': '320px',
-      'mm': '450px',
+      'mm': '480px',
       'mg': '540px'
      }
     },

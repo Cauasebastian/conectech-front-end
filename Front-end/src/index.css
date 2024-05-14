@@ -2,14 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+
+@layer base{
+    body{
+        @apply p-0 m-0 box-border overflow-x-hidden h-screen w-screen flex flex-col
+    }
+    li{
+        @apply list-none
+    }
+}
+
+
+
 @layer components {
     .conectech-button{
         @apply rounded-3xl bg-[#0B7FBE] py-2.5 px-16 text-gray-50 font-poppins whitespace-nowrap
     }
    
     .fundo-form{
-        @apply flex flex-col justify-center items-center border border-[#f3f3f3] rounded-xl bg-[#7c7c7c59] shadow-[0_8px_32px_0_#1f26875e] backdrop-opacity-10
+        @apply flex flex-col justify-center items-center border-[0.73px] border-[#8B8B8B] rounded-xl bg-[#1f2744] 
+
     }
+
     
    
 }

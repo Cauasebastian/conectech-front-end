@@ -21,19 +21,17 @@ const TelaInicial = ()=> {
   
     return(
         
-        <div className=' overflow-x-hidden w-full h-full flex flex-col bg-gradient-to-t from-[#00001d] to-[#003d71] '>
+        <div className='  w-full h-full flex flex-col bg-gradient-to-t from-[#00001d] to-[#003d71] '>
             <Header bgColor='bg-[#003d71]' gap='gap-20' gapMd='md:gap-0'>
                 <ImagemLogo onclick={() => {
                     navigate('/')
                 }} caminhoImagem='images/img-logo.png'/>
                 <LinksHeader>
                     <Link className='cursor-pointer' to='como-funciona' spy={true} smooth={true} offset={-100} duration={500}>Como funciona</Link>
-                    <a onClick={goToLoginPage}>Entrar</a>
+                    <a className='cursor-pointer' onClick={goToLoginPage}>Entrar</a>
                 </LinksHeader>
                 <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' >Entrar</a>
-                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block 3xl:text-xl '>Vamos começar</button>
-               
-                
+                <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block 3xl:text-2xl '>Vamos começar</button>
             </Header>
             <PartePrincipal/>
             <ParteSecundaria/>
