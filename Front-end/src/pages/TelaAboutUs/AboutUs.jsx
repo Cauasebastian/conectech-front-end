@@ -5,11 +5,13 @@ import ImagemLogo from "../../components/ImagemLogo"
 import Sidebar from "../../components/Sidebar"
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 
+
 const TelaAboutUs = () => {
     const navigate = useNavigate();
     const goToHomePage = () => {
         navigate('/home')
     }
+    
     return(
         <>
             <Header>
@@ -29,6 +31,8 @@ const TelaAboutUs = () => {
                             
                        />
                        <span className="font-poppins font-semibold text-[#363636] text-xl">Sobre Nós</span>
+                       
+
                     </div>
                     <div className="ml-5 mt-20 grid grid-cols-3 w-10/12 gap-10 font-poppins">
                         <div className="border-l-2 border-[#074261]  col-span-1 mb-20 flex flex-col gap-5 pl-3 font-poppins">

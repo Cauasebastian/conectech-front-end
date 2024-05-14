@@ -6,6 +6,7 @@ export const DivLogin = styled.div`
     width: 100vw;
     align-items: center;
     flex-direction: column;
-    height: 110vh;
+    height: 100vh;
+    overflow-x: hidden;
     
 `

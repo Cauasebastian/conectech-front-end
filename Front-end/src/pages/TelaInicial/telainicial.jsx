@@ -28,9 +28,9 @@ const TelaInicial = ()=> {
                 }} caminhoImagem='images/img-logo.png'/>
                 <LinksHeader>
                     <Link className='cursor-pointer' to='como-funciona' spy={true} smooth={true} offset={-100} duration={500}>Como funciona</Link>
-                    <a href="" onClick={goToLoginPage}>Entrar</a>
+                    <a onClick={goToLoginPage}>Entrar</a>
                 </LinksHeader>
-                <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' href="">Entrar</a>
+                <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' >Entrar</a>
                 <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block 3xl:text-xl '>Vamos começar</button>
                
                 

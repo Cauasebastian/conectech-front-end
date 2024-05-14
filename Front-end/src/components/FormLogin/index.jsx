@@ -12,6 +12,7 @@ import {isEmail} from 'validator';
 
 import ImagemLogo from '../ImagemLogo';
 import axios from 'axios';
+import useUserContext from '../../hooks/useUserContext';
 
 
 function Form() {
@@ -24,12 +25,12 @@ function Form() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const {setUser, user} = useUserContext();
 
   
 
     const {
         register,
-        handleSubmit,
         reset, 
         formState: { errors },
     } = useForm();
@@ -39,12 +40,14 @@ function Form() {
      axios.post(`http://localhost:8080/users/login?email=${email}&password=${senha}`)
         .then(response => {
             console.log(response.data)
+            setUser(response.data)
         })
         .catch(error => {
             console.error('Erro ao carregar os posts: ' , error)
         })
         
         reset();
+        console.log(user)
         navigate('/home')
     }
 
@@ -54,7 +57,7 @@ function Form() {
             <Header bgColor='bg-transparent'>
                 <ImagemLogo caminhoImagem='images/img-logo.png'/>
             </Header>
-            <div className='w-full h-screen flex flex-col items-center justify-center mp:mt-32  '>
+            <div className='w-full h-screen flex flex-col items-center justify-center mp:mt-20   '>
                     
                     <form 
                         onSubmit={(e) => {
