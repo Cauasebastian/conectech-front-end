@@ -82,7 +82,7 @@ function Form() {
         })
         
         
-        console.log(user)
+        
         
     }
 
@@ -101,14 +101,14 @@ function Form() {
                         })}
                         className='fundo-form mp:p-2 mp:px-6 w-9/12  mp:gap-7 mb-6 mm:w-8/12 mm:h-5/6 mg:h-[90%] md:w-7/12 lg:w-6/12 xl:w-4/12 xl:h-[80%]  2xl:w-4/12 3xl:w-3/12 3xl:h-full  '
                         >
-                        <img className='mp:w-[6rem] mg:w-[7rem] xl:w-[6rem] xl:mt-3 lg:pt-5' src='images/img-telainicial.png'/>
+                        <img className='mp:w-[6rem] mg:w-[7rem] lg:pt-5' src='images/img-telainicial.png'/>
                         <div className='mb-5 flex flex-col mp:gap-5 mm:gap-8'>
-                        <div className='w-full  flex flex-col '>
-                                    <label className='font-poppins text-[#fff] text-xs mp:mb-1 mm:text-sm mg:text-base 2xl:text-lg'>Email</label>
-                                    <div className={`flex items-center relative text-[#0d0c22] rounded-md md:w-80 xl:w-80`}>
+                        <div className='div-input-form'>
+                                    <label className='label-input-form'>Email</label>
+                                    <div className="div-input-with-icons md:w-80 xl:w-80">
                                         <PersonOutlineRoundedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
                                         <input
-                                        className={`bg-[#f8fafc] outline-none ${errors?.email? 'border-2 border-red-700' : 'border-none'} w-full mp:text-sm mm:text-base mg:text-lg mp:px-3 mp:py-2 mp:pl-10 placeholder:text-slate-400 rounded-md ease-in duration-300 `}
+                                        className={`input-form ${errors?.email? 'border-2 border-red-700' : 'border-none'} `}
                                         placeholder='Email...'
                                             type='email'
                                              {...register('email', {
@@ -126,12 +126,12 @@ function Form() {
                                 
                             </div>
                                 
-                                <div className='w-full flex flex-col  '>
-                                    <label className='font-poppins  text-[#fff] text-xs mp:mb-1 mm:text-sm  mg:text-base 2xl:text-lg'>Senha</label>
-                                    <div className={`flex relative items-center  rounded-md bg-[#fff]  `}>
+                                <div className='div-input-form'>
+                                    <label className='label-input-form'>Senha</label>
+                                    <div className={`div-input-with-icons md:w-80 xl:w-80`}>
                                         <LockOutlinedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
                                         <input
-                                                className={`outline-none mp:text-sm mm:text-base ${errors?.password? 'border-2 border-red-700' : 'border-none'} mg:text-lg mp:px-3 mp:py-2 mp:pl-10 placeholder:text-slate-400 w-full rounded-md ease-in duration-300`}
+                                                className={`input-form ${errors?.password? 'border-2 border-red-700' : 'border-none'}`}
                                                 placeholder='Senha...'
                                                 type={showPassword ? 'text' : 'password'}
                                                  {...register('password', {
@@ -153,7 +153,7 @@ function Form() {
                                
                             
                           
-                        <button type='submit' className='conectech-button mp:py-1 mp:px-16 mm:px-20 mm:py-2 mm:mb-2 xl:-mt-5 xl:mb-9'>Enviar</button>
+                        <button type='submit' className='conectech-button mp:py-1 mp:px-16 mm:px-20 mm:py-2 mm:mb-2 '>Enviar</button>
                     </form>       
                     <p className='font-poppins text-[#f3f3f3] mp:text-sm flex mp:gap-2 mp:mb-10 mm:text-base 2xl:text-xl'>Ainda não tem cadastro? <p className='underline text-[#0b7fbe] font-poppins cursor-pointer' onClick={goToTelaCadastro}>Cadastre-se</p></p>  
                </div>

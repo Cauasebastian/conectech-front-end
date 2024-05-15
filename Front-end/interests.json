@@ -1,5 +1,4 @@
-{
-  "interesses":[
+[
     { "id": 1, "nome": "Front-End" },
     { "id": 2, "nome": "Back-End" },
     { "id": 3, "nome": "Design Web" },
@@ -47,4 +46,3 @@
     { "id": 45, "nome": "Angular" },
     { "id": 46, "nome": "Métodos Ágeis" }
   ]
-}

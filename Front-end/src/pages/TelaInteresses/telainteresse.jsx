@@ -1,15 +1,14 @@
-import { DivTelaInteresses, DivTextos, ListaInteresses, TituloPrincipal, TituloSecundario, FormPesquisar, InputPesquisar, ItemInteresse } from "./style";
+import {   ListaInteresses, TituloPrincipal, TituloSecundario, FormPesquisar, InputPesquisar, ItemInteresse } from "./style";
 import Header from "../../components/Header";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Botao from '../../components/Botao'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {useNavigate} from 'react-router-dom'
-import ImagemLogo from "../../components/ImagemLogo";
+import data from '../../../interests.json'
 
 const TelaInteresses = () => {
     const [meusInteresses, setMeusInteresses] = useState([])
-    const [interesses, setInteresses] = useState([])
-    const [busca, setBusca] = useState('')
+    
     const navigate = useNavigate();
     
 
@@ -33,44 +32,30 @@ const TelaInteresses = () => {
         navigate('/home')
     }
     
-    useEffect(() => {
-        fetch('http://localhost:3000/interesses')
-            .then(resposta => resposta.json())
-            .then(dados => {
-                setInteresses(dados)
-            })
-    }, [])
-
-    useEffect(() => {
-        fetch('http://localhost:3000/interesses?nome=' + busca)
-            .then(resposta => resposta.json())
-            .then(dados => {
-                setInteresses(dados)
-            })
-    }, [busca])
+    
     return(
         <>
-            <Header position='fixed'  justifyContent='center' >
-                <ImagemLogo widthLogo='3.3rem' caminhoImagem='images/img-ico.svg'/>
+            <Header bgColor='bg-[#003d71]' >
+                <img className="h-14" src='images/img-ico.svg'/>
             </Header>
-            <DivTelaInteresses>
-                <DivTextos>
+            <div className="bg-gradient-to-t from-[#00001d] to-[#003d71] min-h-screen flex flex-col justify-center items-center mt-20">
+                <div className="flex flex-col justify-center ">
                     <TituloPrincipal>Quais são seus interesses?</TituloPrincipal>
                     <TituloSecundario>Selecione 3 ou mais</TituloSecundario>
-                </DivTextos>
+                </div>
                 <FormPesquisar>
                     <SearchOutlinedIcon sx={{color: '#A4A4A4', marginLeft: '1rem'}}/>
-                    <InputPesquisar placeholder="Pesquise seus interesses" onChange={evento => setBusca(evento.target.value)}/>
+                    <InputPesquisar placeholder="Pesquise seus interesses" />
                 </FormPesquisar>
                 <ListaInteresses>
-                        {interesses.map((item) => <ItemInteresse bgColor={meusInteresses.includes(item.nome) ? '#FFFFFF' : '#31324B'} color={meusInteresses.includes(item.nome) ? '#000' : '#ffffff'} onClick={() => {
+                        {data.map((item) => <ItemInteresse bgColor={meusInteresses.includes(item.nome) ? '#FFFFFF' : '#31324B'} color={meusInteresses.includes(item.nome) ? '#000' : '#ffffff'} onClick={() => {
                             manipulaInteresse(item.nome)
                         }} key={item.id}>{item.nome}</ItemInteresse>)}
                         {/* <ItemInteresse>Front-End</ItemInteresse> */}
                 </ListaInteresses>
                 <Botao onClick={enviarInteresses} nome='Prosseguir' padding='0.5rem 6rem'/>
 
-            </DivTelaInteresses>
+            </div>
         </>
         
     )

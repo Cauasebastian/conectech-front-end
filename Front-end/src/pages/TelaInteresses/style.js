@@ -1,24 +1,7 @@
 import styled from 'styled-components'
 
-export const DivTelaInteresses = styled.div`
-    background-image: linear-gradient(#003363  ,#010727);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    margin-top: 3rem;
-    @media (min-width: 1400px) {
-        height: 100vh;
-    }
-`
-export const DivTextos = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    margin-top: 3rem;
-`
+
+
 export const TituloPrincipal = styled.h2`
      font-family: "Montserrat", sans-serif;
      color: #F1F1F1;

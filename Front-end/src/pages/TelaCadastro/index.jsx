@@ -1,230 +1,167 @@
-import { DivCadastro } from "./style"
-//import FormCadastro from "../../components/FormCadastro"
-import {Box} from '@mui/material';
-import { TituloCadastro, ImgLogo, LinkLogin, ParagrafoLogin } from './style';
-import { stylesFormCadastro } from './style';
-import OutlinedInput from '@mui/material/OutlinedInput';
-
-import {Grid} from '@mui/material'
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Botao from '../../components/Botao';
-
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import HttpsOutlinedIcon from '@mui/icons-material/HttpsOutlined';
-import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
+import Header from "../../components/Header"
+import ImagemLogo from "../../components/ImagemLogo"
+import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import WcOutlinedIcon from '@mui/icons-material/WcOutlined';
-
-import { useState } from 'react';
-//import { useHistory } from 'react-router-dom';
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import {ToastContainer, toast} from 'react-toastify'
 import {useNavigate} from 'react-router-dom'
-import {useForm} from 'react-hook-form'
-import {isEmail} from 'validator';
+import useUserContext from '../../hooks/useUserContext';
+
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 
 const TelaCadastro = () => {
-    //const history = useHistory();
-    const navigate = useNavigate();
-    const goToTelaLogin = () => {
-        navigate('/login')
-     }
+    const navigate = useNavigate()
+    const notifySucess = (mensagem) => {
+        toast.success(mensagem, {
+            position:"top-right"
+        });
+    }
+
+    const notifyError = (mensagem) => {
+        toast.error(mensagem, {
+            position:"top-right"
+        })
+    }
+
+   
+    const [newUser, setNewUser] = useState('')
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show)
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
+    const {setUser, user} = useUserContext();
+
+
+    const onSubmitRegister = (event) => {
+       event.preventDefault();
+
+       const nome = event.target.nome.value;
+       const email = event.target.email.value;
+       const senha = event.target.senha.value;
+       const nascimento = event.target.nascimento.value;
+       const genero = event.target.genero.value;
+
+       const novoUsuario = {
+        nome: nome,
+        email: email,
+        dataNascimento: nascimento,
+        senha: senha,
+        genero: genero
+       }
+
+       setNewUser(novoUsuario)
+       
+       event.target.reset();
+
+       
+       
+    }
+
+    useEffect(() => {
+        if(newUser !== ''){
+            integracaoAPI(newUser)
+            setUser(newUser)
+            console.log(newUser)
+        }
+    },[newUser])
+
+    const integracaoAPI = (user) => {
+        axios.post('http://localhost:8080/users', {
+            name: user.nome,
+            email: user.email,
+            dateOfBirth: user.dataNascimento,
+            password: user.senha,
+            gender: user.genero
+        })
+        .then(response => {
+            notifySucess('Conta criada com sucesso!')
+            console.log(response.data)
+            setTimeout(() => {
+                navigate('/interesses')
+            }, 5000)
+        })
+        .catch(error => {
+            notifyError("Não foi possível criar a conta!")
+            console.error('Erro ao criar a conta: ' , error)
+        })
     }
     
-    const {
-        register,
-        handleSubmit,
-        reset, 
-        formState: { errors },
-    } = useForm();
-
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data))
-        reset();
-        navigate('/interesses')
-       //history.push('/interesses');
-    }
     return(
-        <DivCadastro>
-             <Box component='div' sx={stylesFormCadastro.div} >
-            <TituloCadastro>Cadastre-se</TituloCadastro>
-            <Box
-                component='form'
-                sx={stylesFormCadastro.form}
-                autoComplete='off'
-                noValidate
-                onSubmit={handleSubmit(onSubmit)}
-                
-                >
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
-                            <ImgLogo src='images/img-telainicial.png'/> 
-                        </Grid>
-                        
-                        <Grid item xs={6}>
-                            <FormControl sx={stylesFormCadastro.inputDiv} fullWidth variant='outlined'>
-                            <InputLabel sx={stylesFormCadastro.inputLabel} >Nome</InputLabel>
-                                <OutlinedInput
-                                type='text'
-                                id="outlined-adornment-amount"
-                                sx={stylesFormCadastro.inputField}
-                                {...register('nome', {
-                                    required: true,
-                                    validate: (value) => value.length >= 5,
-                                   
-                                    
-                                })}
-                                label='Nome'
-                                error={errors.nome ? true : false}
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                    <AccountCircle sx={stylesFormCadastro.inputIcon} />
-                                    </InputAdornment>
-                                }
-                                />
-                                 {errors?.nome?.type === 'required' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>O nome é obrigatório.</FormHelperText> }
-                                 {errors?.nome?.type === 'validate' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>O nome deve ter no mínimo 5 caracteres.</FormHelperText> }
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <FormControl sx={stylesFormCadastro.inputDiv} fullWidth variant='outlined'>
-                            <InputLabel sx={stylesFormCadastro.inputLabel} >Email</InputLabel>
-                                <OutlinedInput
-                                id="outlined-adornment-amount"
-                                type='email'
-                                {...register('email', {
-                                    required: true,
-                                    validate: (value) => isEmail(value),
-                                   
-                                    
-                                })}
-                                error={errors.email ? true : false}
-                                sx={stylesFormCadastro.inputField}
-                                label='Nome'
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                    <EmailOutlinedIcon sx={stylesFormCadastro.inputIcon} />
-                                    </InputAdornment>
-                                }
-                                />
-                                {errors?.email?.type === 'required' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>O email é obrigatório.</FormHelperText> }
-                                 {errors?.email?.type === 'validate' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>O email está incorreto.</FormHelperText> }
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FormControl sx={stylesFormCadastro.inputDiv} fullWidth variant='outlined'>
-                            <InputLabel sx={stylesFormCadastro.inputLabel} >Senha</InputLabel>
-                                <OutlinedInput
-                                id="outlined-adornment-amount"
-                                type={showPassword ? 'text' : 'password'}
-                                sx={stylesFormCadastro.inputField}
-                                label='Nome'
-                                {...register('password', {
-                                    required: true, 
-                                    minLength: 8,
-                                    
-                                })}
-                                error={errors.password ? true : false}
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                    <HttpsOutlinedIcon sx={stylesFormCadastro.inputIcon} />
-                                    </InputAdornment>
-                                }
-                                endAdornment={
-                                    <InputAdornment>
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge='end'
-                                            
-                                            sx={stylesFormCadastro.inputIcon}
-                                            >
-                                                {showPassword ? <VisibilityOff fontSize='small' /> : <Visibility fontSize='small' />}
-                
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                />
-                                    {errors?.password?.type === 'required' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>Senha é obrigatória.</FormHelperText> }
-                                    {errors?.password?.type === 'minLength' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>Senha precisa ter no mínimo 8 caracteres.</FormHelperText>}
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FormControl sx={stylesFormCadastro.inputDiv} fullWidth variant='outlined'>
-                            <InputLabel sx={stylesFormCadastro.inputLabel} >Idade</InputLabel>
-                                <OutlinedInput
-                                id="outlined-adornment-amount"
-                                type='number'
-                                sx={stylesFormCadastro.inputField}
-                                {...register('idade', {
-                                    required: true,
-                                    validate: (value) => value>=18,
-                                   
-                                    
-                                })}
-                                label='Nome'
-                                error={errors.idade ? true : false}
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                    <DateRangeOutlinedIcon sx={stylesFormCadastro.inputIcon} />
-                                    </InputAdornment>
-                                }
-                                />
-                                    {errors?.idade?.type === 'required' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>A idade é obrigatória.</FormHelperText> }
-                                    {errors?.idade?.type === 'validate' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>Você precisa ter no mínimo 18 anos.</FormHelperText>}
-                            </FormControl>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FormControl sx={stylesFormCadastro.inputDiv} fullWidth variant='outlined'>
-                            <InputLabel sx={stylesFormCadastro.inputLabel} >Gênero</InputLabel>
-                                <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                {...register('genero', {
-                                    required: true,
-                                    
-                                   
-                                    
-                                })}
-                                error={errors.genero ? true : false}
-                                label='Gênero'
-                                sx={stylesFormCadastro.inputField}
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                    <WcOutlinedIcon sx={stylesFormCadastro.inputIcon} />
-                                    </InputAdornment>
-                                }
-                                >
-                                    <MenuItem value={'Masculino'}>Masculino</MenuItem>
-                                    <MenuItem value={'Feminino'}>Feminino</MenuItem>
-                                    
-                                </Select>
-                                    {errors?.genero?.type === 'required' && <FormHelperText sx={stylesFormCadastro.mensagemErro}>O gênero é obrigatório.</FormHelperText> }
-                                   
-                            </FormControl>
-                        </Grid>
-                 </Grid>
-                  <Grid item xs={6}>
-                    <Botao type='submit'  padding='0.8rem 5rem' nome='Criar conta'/>
-                  </Grid>
-                 
-            </Box>
-            <ParagrafoLogin>Já possui conta? <LinkLogin onClick={goToTelaLogin}>Faça o login</LinkLogin></ParagrafoLogin>  
-        </Box>
-            {/* <FormCadastro/> */}
-        </DivCadastro>
+        <>
+            <Header bgColor='bg-[#003d71]'>
+                <ImagemLogo caminhoImagem='images/img-logo.png'/>
+            </Header>
+            <div className="min-h-screen w-full bg-gradient-to-t from-[#00001d] to-[#003d71] flex flex-col items-center">
+                <form onSubmit={onSubmitRegister} className="fundo-form mp:mt-36 mp:p-2 mp:px-6 w-9/12 mp:mb-10">
+                    <img className='mp:w-[6rem] mg:w-[7rem] 2xl:w-[8.5rem] mp:pt-3 lg:pt-5' src='images/img-telainicial.png'/>
+                    <div className="mb-5 grid grid-cols-2 mp:gap-5 mm:gap-8 lg:grid-cols-6 lg:mt-10 2xl:w-10/12 2xl:gap-10">
+
+                        <div className="div-input-form col-span-2 lg:col-span-3 ">
+                            <label className="label-input-form sm:text-lg">Nome </label>
+                            <div className="div-input-with-icons">
+                                <PersonOutlineRoundedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
+                                <input 
+                                    className="input-form"
+                                    type="text"
+                                    placeholder="Nome completo"
+                                    id="nome" />
+                            </div>
+                        </div>
+
+                        <div className="div-input-form col-span-2 lg:col-span-3">
+                            <label className="label-input-form sm:text-lg">Email</label>
+                            <div className="div-input-with-icons">
+                                <PersonOutlineRoundedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
+                                <input 
+                                    className="input-form"
+                                    type="email"
+                                    placeholder="Email"
+                                    id="email" />
+                            </div>
+                        </div>
+                        <div className="div-input-form col-span-2 lg:col-span-2">
+                            <label className="label-input-form sm:text-lg">Senha</label>
+                            <div className="div-input-with-icons ">
+                                <LockOutlinedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
+                                <input 
+                                    className="input-form"
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Senha"
+                                    id="senha" />
+                                 <RemoveRedEyeOutlinedIcon onClick={handleClickShowPassword} sx={{ position:'absolute', right: '0.5rem', width:'1.5rem', height:'1.3rem', color: '#A4A4A4'}}/>
+                            </div>
+                        </div>
+                        <div className="div-input-form col-span-2 mm:col-span-1 lg:col-span-2">
+                            <label className="label-input-form sm:text-lg ">Data de Nascimento</label>
+                            <div className="div-input-with-icons">
+                                <CalendarMonthOutlinedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
+                                <input 
+                                    className="input-form"
+                                    type="date"
+                                    placeholder="dd/nn/mmmm"
+                                    id="nascimento" />
+                            </div>
+                        </div>
+                        <div className="div-input-form col-span-2 mm:col-span-1 lg:col-span-2">
+                            <label className="label-input-form sm:text-lg ">Gênero</label>
+                            <div className="div-input-with-icons">
+                                <WcOutlinedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
+                                <select className="input-form" id="genero"   >
+                                    <option>Masculino</option>
+                                    <option>Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" className="conectech-button mp:py-1 mp:mt-6 mp:mb-4 mm:py-2 mm:px-24 sm:py-3 sm:px-28 md:text-lg md:px-32 2xl:px-36 2xl:mt-16">Entrar</button>
+                </form>
+            </div>
+            <ToastContainer/>
+        </>
     )
 }
 
