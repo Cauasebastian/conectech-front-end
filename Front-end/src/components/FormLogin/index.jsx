@@ -92,16 +92,16 @@ function Form() {
             <Header bgColor='bg-[#003d71]'>
                 <ImagemLogo caminhoImagem='images/img-logo.png'/>
             </Header>
-            <div className='w-full h-full flex flex-col items-center  mp:mt-44 mm:mt-40 2xl:mt-44 3xl:mt-52 '>
+            <div className='w-full h-full flex flex-col items-center  mp:mt-44 mm:mt-40 xl:mt-28  2xl:mt-44 3xl:mt-52 overflow-x-hidden'>
                     
                     <form 
                         onSubmit={handleSubmit(() => {
                            
                             onSubmitLogin(email, password)
                         })}
-                        className='fundo-form mp:p-2 mp:px-6 w-9/12  mp:gap-7 mb-6 mm:w-8/12 mm:h-5/6 mg:h-[90%] md:w-7/12 lg:w-6/12 xl:w-4/12  2xl:w-4/12 3xl:w-3/12 3xl:h-full  '
+                        className='fundo-form mp:p-2 mp:px-6 w-9/12  mp:gap-7 mb-6 mm:w-8/12 mm:h-5/6 mg:h-[90%] md:w-7/12 lg:w-6/12 xl:w-4/12 xl:h-[80%]  2xl:w-4/12 3xl:w-3/12 3xl:h-full  '
                         >
-                        <img className='mp:w-[6rem] mg:w-[7rem] lg:pt-5' src='images/img-telainicial.png'/>
+                        <img className='mp:w-[6rem] mg:w-[7rem] xl:w-[6rem] xl:mt-3 lg:pt-5' src='images/img-telainicial.png'/>
                         <div className='mb-5 flex flex-col mp:gap-5 mm:gap-8'>
                         <div className='w-full  flex flex-col '>
                                     <label className='font-poppins text-[#fff] text-xs mp:mb-1 mm:text-sm mg:text-base 2xl:text-lg'>Email</label>
@@ -153,7 +153,7 @@ function Form() {
                                
                             
                           
-                        <button type='submit' className='conectech-button mp:py-1 mp:px-16 mm:px-20 mm:py-2 mm:mb-2'>Enviar</button>
+                        <button type='submit' className='conectech-button mp:py-1 mp:px-16 mm:px-20 mm:py-2 mm:mb-2 xl:-mt-5 xl:mb-9'>Enviar</button>
                     </form>       
                     <p className='font-poppins text-[#f3f3f3] mp:text-sm flex mp:gap-2 mp:mb-10 mm:text-base 2xl:text-xl'>Ainda não tem cadastro? <p className='underline text-[#0b7fbe] font-poppins cursor-pointer' onClick={goToTelaCadastro}>Cadastre-se</p></p>  
                </div>
