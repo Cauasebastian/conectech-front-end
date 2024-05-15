@@ -7,7 +7,7 @@
 
 @layer base{
     body{
-        @apply p-0 m-0 box-border overflow-x-hidden h-screen w-screen flex flex-col
+        @apply p-0 m-0 box-border overflow-x-hidden h-screen w-screen flex flex-col 
     }
     li{
         @apply list-none

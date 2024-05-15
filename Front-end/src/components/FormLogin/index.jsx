@@ -10,7 +10,8 @@ import {ToastContainer, toast} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 
 import {useForm} from 'react-hook-form'
-import {isEmail} from 'validator';
+import * as yup from 'yup'
+
 
 import ImagemLogo from '../ImagemLogo';
 import axios from 'axios';
@@ -20,17 +21,19 @@ import useUserContext from '../../hooks/useUserContext';
 
 function Form() {
 
-    const notifySucess = () => {
-        toast.success("Entrando!", {
+    const notifySucess = (mensagem) => {
+        toast.success(mensagem, {
             position:"top-right"
         });
     }
 
-    const notifyError = () => {
-        toast.error("Conta não encontrada!", {
+    const notifyError = (mensagem) => {
+        toast.error(mensagem, {
             position:"top-right"
         })
     }
+
+   
 
     const navigate = useNavigate();
     const goToTelaCadastro = () => {
@@ -42,28 +45,40 @@ function Form() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {setUser, user} = useUserContext();
+    
+
+ 
 
   
 
+//   
+
     const {
         register,
-        reset, 
-        formState: { errors },
+        formState: {errors},
+        handleSubmit
+        
     } = useForm();
 
     const onSubmitLogin = (email, senha) => {
         
      axios.post(`http://localhost:8080/users/login?email=${email}&password=${senha}`)
         .then(response => {
+            notifySucess("Entrando...")
             console.log(response.data)
             setUser(response.data)
-            notifySucess()
+            setTimeout(() => {
+                navigate('/home')
+            }, 5000)
+            
             
         })
         .catch(error => {
-            notifyError()
-            console.error('Erro ao carregar os posts: ' , error)
-            reset();
+            setEmail('')
+            setPassword('')
+            notifyError("Conta não encontrada!")
+            console.error('Erro ao carregar a conta: ' , error)
+            
         })
         
         
@@ -80,10 +95,10 @@ function Form() {
             <div className='w-full h-full flex flex-col items-center  mp:mt-44 mm:mt-40 2xl:mt-44 3xl:mt-52 '>
                     
                     <form 
-                        onSubmit={(e) => {
-                            e.preventDefault()
+                        onSubmit={handleSubmit(() => {
+                           
                             onSubmitLogin(email, password)
-                        }}
+                        })}
                         className='fundo-form mp:p-2 mp:px-6 w-9/12  mp:gap-7 mb-6 mm:w-8/12 mm:h-5/6 mg:h-[90%] md:w-7/12 lg:w-6/12 xl:w-4/12  2xl:w-4/12 3xl:w-3/12 3xl:h-full  '
                         >
                         <img className='mp:w-[6rem] mg:w-[7rem] lg:pt-5' src='images/img-telainicial.png'/>
@@ -93,20 +108,21 @@ function Form() {
                                     <div className={`flex items-center relative text-[#0d0c22] rounded-md md:w-80 xl:w-80`}>
                                         <PersonOutlineRoundedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
                                         <input
-                                        className={`bg-[#f8fafc] outline-none w-full mp:text-sm mm:text-base mg:text-lg mp:px-3 mp:py-2 mp:pl-10 ${errors?.email? 'border-2 border-red-700' : 'border-none' } placeholder:text-slate-400 rounded-md ease-in duration-300 `}
+                                        className={`bg-[#f8fafc] outline-none ${errors?.email? 'border-2 border-red-700' : 'border-none'} w-full mp:text-sm mm:text-base mg:text-lg mp:px-3 mp:py-2 mp:pl-10 placeholder:text-slate-400 rounded-md ease-in duration-300 `}
                                         placeholder='Email...'
                                             type='email'
-                                            // {...register('email', {
-                                            //     required: true,
-                                            //     validate: (value) => isEmail(value)
-                                            // })}
+                                             {...register('email', {
+                                                 required: true,
+                                                
+                                             })}
                                             onChange={(event) => setEmail(event.target.value)}
         
                                         />
                                     </div>
                                     
-                                {errors?.email?.type === 'required' && <FormHelperText sx={{color: '#f44336'}}>O email é obrigatório.</FormHelperText> }
-                                {errors?.email?.type === 'validate' && <FormHelperText sx={{color: '#f44336'}}>O email está incorreto.</FormHelperText> }
+                                {errors?.email?.type === 'required' && <FormHelperText sx={{color: '#f44336'}}>Email é obrigatório</FormHelperText> }
+                                {errors?.email?.type === 'validate' && <FormHelperText sx={{color: '#f44336'}}>Email é inválido</FormHelperText> }
+                                
                                 
                             </div>
                                 
@@ -115,22 +131,22 @@ function Form() {
                                     <div className={`flex relative items-center  rounded-md bg-[#fff]  `}>
                                         <LockOutlinedIcon sx={{ position:'absolute', left: '0.5rem', width:'1.5rem', height:'1.2rem', color: '#A4A4A4'}}/>
                                         <input
-                                                className={`outline-none mp:text-sm mm:text-base mg:text-lg mp:px-3 mp:py-2 mp:pl-10 ${errors?.password? 'border-2 border-red-700' : 'border-none' } placeholder:text-slate-400 w-full rounded-md ease-in duration-300`}
+                                                className={`outline-none mp:text-sm mm:text-base ${errors?.password? 'border-2 border-red-700' : 'border-none'} mg:text-lg mp:px-3 mp:py-2 mp:pl-10 placeholder:text-slate-400 w-full rounded-md ease-in duration-300`}
                                                 placeholder='Senha...'
                                                 type={showPassword ? 'text' : 'password'}
-                                                // {...register('password', {
-                                                //     required: true, 
-                                                //     minLength: 8
+                                                 {...register('password', {
+                                                     required: true, 
+                                                     minLength: 8
                                                     
-                                                // })}
+                                                 })}
                                                 onChange={(event) => setPassword(event.target.value)}
                                             />
                                             <RemoveRedEyeOutlinedIcon onClick={handleClickShowPassword} sx={{ position:'absolute', right: '0.5rem', width:'1.5rem', height:'1.3rem', color: '#A4A4A4'}}/>
                                     </div>
-                                       
+                                        
                                         {errors?.password?.type === 'required' && <FormHelperText sx={{color: '#f44336'}}>Senha é obrigatória.</FormHelperText> }
                                         {errors?.password?.type === 'minLength' && <FormHelperText sx={{color: '#f44336'}}>Senha precisa ter no mínimo 8 caracteres.</FormHelperText>}
-                                        {errors?.password?.type === 'validate' &&  <FormHelperText sx={{color: '#f44336'}}>O email ou senha estão incorretos.</FormHelperText> }  
+                                        {errors?.password?.type === 'validate' &&  <FormHelperText sx={{color: '#f44336'}}>O email ou senha estão incorretos.</FormHelperText> }   
                                 </div>
                         </div>
                             

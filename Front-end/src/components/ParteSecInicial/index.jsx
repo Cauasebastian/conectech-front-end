@@ -2,7 +2,7 @@
 
 const ParteSecundaria = () => {
     return(
-        <div id="como-funciona" className=" mt-32 flex flex-col items-center justify-center  ">
+        <div id="como-funciona" className=" mt-32 flex flex-col items-center justify-center   ">
             <img className='-mb-16 w-10/12 sm:-mb-28 mg:-mb-24 md:-mb-36 xl:w-7/12 xl:-mb-56 3xl:w-8/12 3xl:-mb-72 2xl:w-8/12' src="/images/text-telainicial.svg" alt="" />
             
             <img className='w-[100vw]' src="/images/img-globo2.png" alt="" />
