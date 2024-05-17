@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header"
-import IconUser from "../../components/IconUser"
+
 import ImagemLogo from "../../components/ImagemLogo"
-import Sidebar from "../../components/Sidebar"
+//import Sidebar from "../../components/Sidebar"
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 
 
@@ -15,9 +15,9 @@ const TelaAboutUs = () => {
     return(
         <>
             <Header>
-                <Sidebar/>
+                
                 <ImagemLogo position='relative'  caminhoImagem='images/img-logo-pree.png'/>
-                <IconUser/>
+                <img className='w-10 object-cover cursor-pointer mr-10' src='images/user.png'/>
             </Header>
             <div className="flex flex-col absolute left-40 top-32">
                     <div className="flex items-center gap-1 mb-2">

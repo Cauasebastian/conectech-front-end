@@ -1,7 +1,8 @@
 import Header from "../../components/Header"
 import ImagemLogo from '../../components/ImagemLogo'
 import Sidebar from '../../components/Sidebar'
-import IconUser from '../../components/IconUser'
+import HeaderHome from "../../components/HeaderHome/HeaderHome"
+
 import { ContainerEvents,  DivContainerEvents, DivEvents,  DivNavbarEvents, Icons,  ItemRollEvents,  RollEvents, TextTituloEvents, TitleDivEvents,  TituloEvents } from "./style"
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 // import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
@@ -10,6 +11,7 @@ import {useNavigate} from 'react-router-dom'
 import data from '../../../events.json'
 import Evento from "../../components/Evento"
 
+
 const Eventos = () => {
     const interessesPessoais = ['Front-End', 'Back-End', 'Design', 'DevOps', 'Banco de dados']
     const navigate = useNavigate();
@@ -17,12 +19,13 @@ const Eventos = () => {
         navigate('/home')
     }
     return(
-        <>
-            <Header bgColor='#fff' justifyContent='space-between' position='fixed'>
-                    <Sidebar/>
-                    <ImagemLogo position='relative'  caminhoImagem='images/img-logo-pree.png'/>
-                    <IconUser/>
-            </Header>
+        <div className='w-full min-h-screen flex'>
+        
+        <Sidebar/>
+        <HeaderHome>
+            <img src="images/img-logo-pree.png" className='mp:ml-24 mm:ml-28 sm:ml-40 md:ml-52 lg:ml-28  w-40' alt="" />
+            <img className='w-10 object-cover cursor-pointer mp:mr-2 mm:mr-0 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
+        </HeaderHome>
             <ContainerEvents>
                 <DivNavbarEvents>
                     <TituloEvents>
@@ -52,7 +55,7 @@ const Eventos = () => {
                     </DivEvents>
                 </DivContainerEvents>
             </ContainerEvents>
-        </>
+        </div>
     )
 }
 

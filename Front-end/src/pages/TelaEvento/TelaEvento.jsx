@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import Header from '../../components/Header'
 import ImagemLogo from '../../components/ImagemLogo'
-import IconUser from '../../components/IconUser'
+
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
@@ -24,7 +24,7 @@ const TelaEvento = () => {
         <>
              <Header bgColor='#fff' justifyContent='space-between' position='fixed'>
                 <ImagemLogo position='relative'  caminhoImagem='images/img-logo-pree.png'/>
-                <IconUser/>
+                <img className='w-10 object-cover cursor-pointer mr-10' src='images/user.png'/>
             </Header>
             <DivSuperiorTelaEvento>
               <ImgSuperiorTelaEvento src="images/circ-sup.png" alt="" />

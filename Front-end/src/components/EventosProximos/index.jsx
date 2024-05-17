@@ -1,38 +1,20 @@
-import { ContainerEventos, DivEventos, TituloEventos } from "./style"
 import data from '../../../events.json'
-import { register } from 'swiper/element/bundle';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import './styles.css';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import Evento from "../Evento";
 
 
 const EventosProximos = () => {
-    register();
-    
-    
     return(
-        <ContainerEventos>
-            <TituloEventos>Eventos Próximos</TituloEventos>
-            <DivEventos>
-                <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    spaceBetween={10}
-                    slidesPerView={3}
-                    pagination={{ clickable: true }}
-                    className="div-swiper"
-                    
-               >
+        <div className='mt-24 mp:ml-20   flex flex-col items-center justify-center'>
+            <div className='flex w-full items-center justify-around mm:gap-28 md:gap-80 '>
+                <p className='font-poppins font-medium  text-base sm:text-lg text-[#363636]'>Eventos Próximos</p>
+                <p className='mp:text-[12px] sm:text-sm text-[#747688] font-poppins'>Ver mais</p>
+            </div>
+            
+            <div className='grid grid-cols-6 gap-3 mt-3'>
                     {data.map((evento) => {
                         return(
-                            <SwiperSlide key={evento.id}>
-                                <Evento 
+                            <div className='col-span-6 md:col-span-3 lg:col-span-2 flex' key={evento.id}>
+                                 <Evento 
                                     titulo={evento.title} 
                                     imagem={evento.image} 
                                     data={evento.data} 
@@ -41,15 +23,13 @@ const EventosProximos = () => {
                                     totalParticipantes={evento.total_participantes}
                                     descricaoEvento={evento.descricao}
                                     fotoOrganizador={evento.foto_organizador}/>
-                            </SwiperSlide>
+                            </div>
+                               
                         )
                     })}
-                </Swiper>
-               
-                   
-            </DivEventos>
+            </div>
             
-        </ContainerEventos>
+        </div>
     )
 }
 
