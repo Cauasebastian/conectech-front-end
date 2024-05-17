@@ -5,7 +5,7 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import { useState } from "react";
-import { IconsPost } from "./style";
+
 import {HeartIcon} from '@heroicons/react/24/solid'
 const DestaquesForum = () => {
     
@@ -34,8 +34,8 @@ const DestaquesForum = () => {
     
     return(
         <div className="mp:ml-24 mt-14 flex flex-col items-center justify-center">
-            <div className="flex w-full font-poppins items-center justify-around mm:gap-28 md:gap-80 lg:gap-[24rem] ">
-                <p className="font-poppins font-medium  text-base sm:text-lg sm:-ml-8 md:ml-0 md:text-xl text-[#363636]">Veja os destaques no fórum</p>
+            <div className="flex w-full font-poppins items-center justify-around mm:gap-28 mg:gap-20 md:gap-80 lg:gap-[24rem] ">
+                <p className="font-poppins font-medium  text-base sm:text-lg mg:-ml-5 sm:-ml-8 md:ml-0 md:text-xl text-[#363636]">Veja os destaques no fórum</p>
                 <p className="mp:text-[12px] sm:text-sm md:text-base text-[#747688] font-poppins">Ver mais</p>
             </div>
             <div className="grid w-full grid-cols-1 gap-10 mt-7 mp:-ml-3 ">
@@ -48,7 +48,7 @@ const DestaquesForum = () => {
                                 <span className="text-[0.7rem] mm:text-[0.8rem] font-poppins bg-[#4A91A5] text-[#fff] py-[0.2rem] px-[0.3rem] border-none rounded-2xl">{post.tagPost}</span>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
-                            className="w-5 h-5 col-span-1 text-[#575757] mp:ml-8 md:w-6 md:h-6 md:ml-28">
+                            className="w-5 h-5 col-span-1 text-[#575757] mp:ml-8 mm:ml-12 md:w-6 md:h-6 md:ml-28">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                             </svg>
 
@@ -90,7 +90,7 @@ const DestaquesForum = () => {
                                     </div>
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
-                                className="w-5 h-5 text-[#575757] mp:ml-8 md:w-6 md:h-6 md:ml-28">
+                                className="w-5 h-5 text-[#575757] mp:ml-8 mm:ml-12 md:w-6 md:h-6 md:ml-28">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
                                 </svg>
 

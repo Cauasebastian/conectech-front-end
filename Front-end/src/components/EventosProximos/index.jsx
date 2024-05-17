@@ -4,13 +4,13 @@ import Evento from "../Evento";
 
 const EventosProximos = () => {
     return(
-        <div className='mt-24 mp:ml-20 lg:mt-28 sm:ml-10 md:ml-20  flex flex-col items-center justify-center'>
+        <div className='mt-24 mp:ml-20 mg:ml-14 lg:mt-28 sm:ml-10 md:ml-20  flex flex-col items-center justify-center'>
             <div className='flex w-full items-center justify-around mm:gap-28 md:gap-80 lg:gap-[24rem] '>
                 <p className='font-poppins font-medium  text-base sm:text-lg md:text-xl text-[#363636]'>Eventos Próximos</p>
                 <p className='mp:text-[12px] sm:text-sm md:text-base text-[#747688] font-poppins'>Ver mais</p>
             </div>
             
-            <div className='grid grid-cols-6 gap-3 mt-3'>
+            <div className='grid grid-cols-6 gap-3 mt-3 sm:-ml-10'>
                     {data.map((evento) => {
                         return(
                             <div className='col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-2 flex' key={evento.id}>
