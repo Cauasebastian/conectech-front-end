@@ -41,7 +41,7 @@ const DestaquesForum = () => {
             <div className="grid w-full grid-cols-1 gap-10 mt-7 mp:-ml-3 ">
                 {dataPost.map((post, index) => {
                     return(
-                        <div className="grid grid-cols-4 gap-3 rounded-lg items-center justify-center shadow-xl mp:mx-2 px-2 py-3 bg-blue-400 " key={index}>
+                        <div className="grid grid-cols-4 gap-3 rounded-lg items-center justify-center shadow-xl mp:mx-2 px-2 py-3  " key={index}>
                             <div id="div-info-user" className="col-span-3 flex items-center  gap-2 md:gap-4 ">
                                 <img className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10" src={post.imagemPerfil}/>
                                 <p className="font-poppins text-xs mm:text-sm md:text-base">{post.nomeUsuario}</p>
