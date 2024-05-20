@@ -13,8 +13,8 @@
     },
     {
         "id": 2,
-        "image":"images/img-tema-js.png",
-        "title": "JavaScript: Do básico ao avançado",
+        "image":"images/img-evento1.png",
+        "title": "Angular vs React",
         "data": "Qua, Mar 28 - 10:30 - 14:30",
         "local": "Recife, PE - Brasil",
         "tema": "Front-End", 
@@ -38,7 +38,7 @@
     {
         "id": 4,
         "image":"images/img-tema-js.png",
-        "title": "JavaScript: Do básico ao avançado",
+        "title": "JS básico ",
         "data": "Qua, Mar 28 - 10:30 - 14:30",
         "local": "Recife, PE - Brasil",
         "tema": "Front-End",

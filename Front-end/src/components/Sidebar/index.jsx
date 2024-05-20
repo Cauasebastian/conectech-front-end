@@ -23,7 +23,7 @@ const Sidebar = () => {
     
     const showSidebar = () => setSidebar(!sidebar) 
     return(
-        <nav id="sidebar" className={`h-screen bg-[#fff]   flex flex-col justify-between lg:rounded-[0px_18px_18px_0px] fixed  z-50 transition-all duration-[1000ms] ${sidebar ? 'min-w-[15%]' : 'min-w-3'} `} >
+        <nav id="sidebar" className={`h-screen bg-[#ffffff]   flex flex-col justify-between lg:rounded-[0px_18px_18px_0px] fixed  z-50 transition-all duration-[1000ms] ${sidebar ? 'min-w-[15%]' : 'min-w-3'} `} >
             <div id="sidebar-content" className={`p-3 flex  flex-col  items-center `}>
                 <div id="foto-conec"  className="flex items-center gap-12">
                     {sidebar && <img className="w-32" src='images/img-logo-pree.png'/>}
