@@ -9,6 +9,7 @@ import Favoritos from './pages/Favoritos/Favoritos'
 import Forum from './pages/Forum/Forum'
 import TelaEvento from './pages/TelaEvento/TelaEvento'
 import TelaAboutUs from './pages/TelaAboutUs/AboutUs'
+import Perfil from './pages/Perfil/perfil'
 import UserProvider from './contexts/UserProvider'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
               <Route path='/forum' element={<Forum/>}/>
               <Route path='/sobrenos' element={<TelaAboutUs/>}/>
               <Route path='/evento' element={<TelaEvento/>}/>
+              <Route path='/perfil' element={<Perfil/>}/>
             </Routes>
         </UserProvider>
       

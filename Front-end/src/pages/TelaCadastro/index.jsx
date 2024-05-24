@@ -33,24 +33,24 @@ const TelaCadastro = () => {
     const [newUser, setNewUser] = useState('')
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show)
-    const {setUser, user} = useUserContext();
+    const {setUser} = useUserContext();
 
 
     const onSubmitRegister = (event) => {
        event.preventDefault();
 
-       const nome = event.target.nome.value;
+       const name = event.target.nome.value;
        const email = event.target.email.value;
-       const senha = event.target.senha.value;
-       const nascimento = event.target.nascimento.value;
-       const genero = event.target.genero.value;
+       const password = event.target.senha.value;
+       const dateOfBirth = event.target.nascimento.value;
+       const gender = event.target.genero.value;
 
        const novoUsuario = {
-        nome: nome,
+        name: name,
         email: email,
-        dataNascimento: nascimento,
-        senha: senha,
-        genero: genero
+        dateOfBirth: dateOfBirth,
+        password: password,
+        gender: gender
        }
 
        setNewUser(novoUsuario)
@@ -71,11 +71,11 @@ const TelaCadastro = () => {
 
     const integracaoAPI = (user) => {
         axios.post('http://localhost:8080/users', {
-            name: user.nome,
+            name: user.name,
             email: user.email,
-            dateOfBirth: user.dataNascimento,
-            password: user.senha,
-            gender: user.genero
+            dateOfBirth: user.dateOfBirth,
+            password: user.password,
+            gender: user.gender
         })
         .then(response => {
             notifySucess('Conta criada com sucesso!')

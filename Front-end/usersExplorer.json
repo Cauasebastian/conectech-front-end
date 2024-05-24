@@ -3,31 +3,31 @@
         
         "fotoPerfil": "images/img-user.jpg",
         "nome": "Felipe Oliveira",
-        "tags":["JavaScript", "React", "Tailwind"]
+        "tags":["JS", "React", "Java"]
     },
     {
         
         "fotoPerfil": "images/img-user.jpg",
         "nome": "Lara Nunes",
-        "tags":["JavaScript", "React", "Tailwind"]
+        "tags":["JS", "React", "Java"]
     },
     {
         
         "fotoPerfil": "images/img-user.jpg",
         "nome": "Larinha Linda",
-        "tags":["JavaScript", "React", "Tailwind"]
+        "tags":["JS", "React", "Java"]
     },
     {
         
         "fotoPerfil": "images/img-user.jpg",
         "nome": "Lara Nunes",
-        "tags":["JavaScript", "React", "Tailwind"]
+        "tags":["JS", "React", "Java"]
     },
     {
         
         "fotoPerfil": "images/img-user.jpg",
         "nome": "Lara Nunes",
-        "tags":["JavaScript", "React", "Tailwind"]
+        "tags":["JS", "React", "Java"]
     }
     
 ]

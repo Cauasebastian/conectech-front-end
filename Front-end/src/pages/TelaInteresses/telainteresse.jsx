@@ -43,7 +43,7 @@ const TelaInteresses = () => {
             </Header>
             <div className="bg-gradient-to-t from-[#00001d] to-[#003d71] min-h-screen flex flex-col justify-center items-center mp:mt-24 mg:mt-20">
                 <div className="flex w-[70%] flex-col justify-start gap-2 mt-10 ">
-                    <h2 className="font-poppins text-[#f1f1f1] mp:text-xl mg:text-xl lg:text-2xl mp:font-normal">Quais são seus interesses, {user.nome}?</h2>
+                    <h2 className="font-poppins text-[#f1f1f1] mp:text-xl mg:text-xl lg:text-2xl mp:font-normal">Selecione 5 interesses, {user.name}?</h2>
                     <p className="text-[#b5b5b5] text-xl lg:text-2xl">Selecione 3 ou mais</p>
                     
                 </div>
@@ -55,7 +55,7 @@ const TelaInteresses = () => {
                         {data.map((item) => <li className={`${meusInteresses.includes(item.nome) ? 'bg-[#fff]' : 'bg-[#31324B]'} ${meusInteresses.includes(item.nome) ? 'text-[#000]' : 'text-[#fff]'} font-poppins cursor-pointer text-base rounded-3xl border border-[#D8D8D8] py-2 px-4`}  onClick={() => {
                             manipulaInteresse(item.nome)
                         }} key={item.id}>{item.nome}</li>)}
-                        {/* <ItemInteresse>Front-End</ItemInteresse> */}
+                       
                 </ul>
                 <button className="conectech-button mp:mb-10 mp:px-24 mg:py-3 mg:px-32 mg:text-lg" onClick={enviarInteresses} >Enviar</button>
 
