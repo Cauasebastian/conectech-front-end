@@ -18,6 +18,7 @@ const TelaInicial = ()=> {
      const goToTelaCadastro = () => {
         navigate('/cadastro')
      }
+    
   
     return(
         
@@ -32,6 +33,7 @@ const TelaInicial = ()=> {
                 </LinksHeader>
                 <a onClick={goToLoginPage} className='text-corTexto-100 border-l-[#074261] text-lg flex sm:hidden' >Entrar</a>
                 <button onClick={goToTelaCadastro}  className='conectech-button hidden sm:block 3xl:text-2xl '>Vamos começar</button>
+                
             </Header>
             <PartePrincipal/>
             <ParteSecundaria/>

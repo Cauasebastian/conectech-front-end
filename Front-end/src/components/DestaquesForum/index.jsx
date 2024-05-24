@@ -39,7 +39,7 @@ const DestaquesForum = () => {
     };
     
     return(
-        <div className="mp:ml-24 md:ml-28 mt-8 lg:-mt-10 xl:-mt-14 lg:ml-[6.5rem] flex flex-col items-center justify-center overflow-x-hidden">
+        <div className="mp:ml-5 md:ml-28 mt-8 lg:-mt-10 xl:-mt-14 lg:ml-[6.5rem] flex flex-col items-center justify-center overflow-x-hidden">
             <div className="flex w-full font-poppins items-center justify-around mp:-ml-5 mm:-ml-10 mg:-ml-6 sm:-ml-0 lg:gap-[2rem] lg:ml-4 xl:gap-[12rem] xl:ml-16 2xl:gap-[15rem] 3xl:gap-[47rem] ">
                 <p className="font-poppins font-medium mp:text-sm w-[50%] text-base sm:text-lg mg:-ml-5 2xl:text-2xl sm:-ml-8 md:-ml-16 md:text-xl text-[#363636]">Veja os destaques no fórum</p>
                 <p className="mp:text-[10px] mm:text-[11px] sm:text-sm md:text-base md:mr-3 sm:mr-0 2xl:text-lg  text-[#747688] font-poppins cursor-pointer" onClick={goToForum}>Ver mais</p>

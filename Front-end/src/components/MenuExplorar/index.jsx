@@ -28,7 +28,7 @@ const MenuExplorar = () => {
     };
 
     return(
-        <div id="container-explorar" className='mp:ml-24 md:ml-[6.5rem] lg:mt-[6.8rem] lg:ml-1 xl:ml-14 2xl:ml-12  mb-10'>
+        <div id="container-explorar" className='mp:ml-5 md:ml-[6.5rem] lg:mt-[6.8rem] lg:ml-1 xl:ml-14 2xl:ml-12  mb-10'>
             <p id="titulo-explorar" className='font-poppins font-medium mp:text-sm ml-3 text-base sm:text-lg sm:ml-6 2xl:text-2xl md:text-xl  text-[#363636]'>Explorar</p>
             <div id="titulo-itens-explorar" className='flex  md:ml-4 items-center ml-2 mr-7 justify-center mp:text-sm mp:gap-8  mp:mt-4 mp:mb-6 mp:py-2 mp:px-1  shadow-md rounded-md lg:gap-3 2xl:w-full '>
                 {['Usuários', 'Grupos', 'Temas'].map((item, index) => (
