@@ -21,7 +21,7 @@ const Home = ()=>{
 
     console.log(user)
     return(
-        <div className='max-w-screen min-h-screen overflow-y-hidden flex bg-[#fbfbfb] '>
+        <div className='w-full min-h-screen overflow-y-hidden flex bg-[#fbfbfb] '>
             <Sidebar/>
             <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-44' alt="" />
@@ -32,7 +32,7 @@ const Home = ()=>{
                 <div className='col-span-3 lg:row-start-1 lg:row-end-2 '>
                     <EventosProximos/>
                 </div>
-                <div className='col-span-3 lg:row-start-2 lg:row-end-3'>
+                <div className='col-span-3 lg:row-start-2 lg:row-end-3  mb-8'>
                     <DestaquesForum/>
                 </div>
                 <div className='col-span-1 lg:row-start-1 lg:row-span-4 '>
