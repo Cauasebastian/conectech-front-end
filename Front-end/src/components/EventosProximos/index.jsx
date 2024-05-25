@@ -12,15 +12,15 @@ const EventosProximos = () => {
     const [eventosVisiveis, setEventosVisiveis] = useState(data.slice(0, 3))
     return(
         <div className='mt-24 w-full flex flex-col items-center justify-center'>
-            <div className='flex w-full items-center'>
-                <p className='font-poppins font-medium mp:text-sm text-[#363636]'>Eventos Próximos</p>
-                <p className='text-[#747688] font-poppins cursor-pointer' onClick={goToTelaEventos}>Ver mais</p>
+            <div className='flex w-[90%] items-center ml-5 mg:mb-3 '>
+                <p className='font-poppins font-medium text-sm mg:text-base text-[#363636] mr-36 mm:mr-56 mg:mr-64'>Eventos Próximos</p>
+                <p className='text-[#747688] font-poppins cursor-pointer text-[0.7rem] mg:text-xs' onClick={goToTelaEventos}>Ver mais</p>
             </div>
             
-            <div className='grid grid-cols-6 gap-3 mt-3 lg:mt-0 mm:-ml-1 sm:-ml-10 md:ml-1 2xl:-ml-24 mm:w-[90%] mg:w-[90%] mg:ml-0'>
+            <div className='grid grid-cols-6 mt-3 w-[90%] mr-2 gap-3'>
                     {eventosVisiveis.map((evento) => {
                         return(
-                            <div className='col-span-6 lg:col-span-6 xl:col-span-2 flex    ' key={evento.id}>
+                            <div className='col-span-6 lg:col-span-6 xl:col-span-2 flex' key={evento.id}>
                                  <Evento 
                                     titulo={evento.title} 
                                     imagem={evento.image} 
