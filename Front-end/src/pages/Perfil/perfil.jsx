@@ -13,7 +13,9 @@ import {
 } from '../../services/userService';
 
 const Perfil = () => {
-  const userId = '665247a39c7bf960c0fbe1d1'; // Substitute with the actual user ID
+  //O id do usuário logado é o id do usuário que está acessando o perfil e vai ser substituido pelo do session storage
+  const userId = localStorage.getItem('userId'); // Substitute with the actual user ID
+  console.log(userId);
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [userProfile, setUserProfile] = useState(null);

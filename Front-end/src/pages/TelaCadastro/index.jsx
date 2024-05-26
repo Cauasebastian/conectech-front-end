@@ -78,17 +78,26 @@ const TelaCadastro = () => {
             gender: user.gender
         })
         .then(response => {
-            notifySucess('Conta criada com sucesso!')
-            console.log(response.data)
+            // Extrair o ID do usuário retornado do JSON
+            const userId = response.data.id;
+            
+            // Armazenar as informações do usuário no sessionStorage
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('userName', user.name);
+            localStorage.setItem('userEmail', user.email);
+            
+            notifySucess('Conta criada com sucesso!');
+            console.log(response.data);
+    
             setTimeout(() => {
-                navigate('/interesses')
-            }, 5000)
+                navigate('/interesses');
+            }, 5000);
         })
         .catch(error => {
-            notifyError("Não foi possível criar a conta!")
-            console.error('Erro ao criar a conta: ' , error)
-        })
-    }
+            notifyError("Não foi possível criar a conta!");
+            console.error('Erro ao criar a conta: ', error);
+        });
+    };
     
     return(
         <>
