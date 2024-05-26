@@ -13,7 +13,7 @@ import {
 } from '../../services/userService';
 
 const Perfil = () => {
-  const userId = '664eaeaa6380437538d4523c'; // Substitute with the actual user ID
+  const userId = '665247a39c7bf960c0fbe1d1'; // Substitute with the actual user ID
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [userProfile, setUserProfile] = useState(null);
@@ -92,11 +92,11 @@ const Perfil = () => {
     <div className="min-w-screen min-h-screen bg-[#fbfbfb] flex flex-col">
       <Sidebar />
       <HeaderHome>
-        {/*Imagem do User Pequena*/}
-        <img src={profileImage || "images/user.png"} className="block sm:hidden w-12 h-12 mp:ml-28 mm:ml-44" alt="" />
-        {/*Logo do CONECTECH*/}
-        <img src="images/img-logo-pree.png" className="mp:ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-28 w-40" alt="" />
-        {/*Imagem do User Pequena*/}
+        {/* Imagem do User Pequena */}
+        <img src={profileImage || "images/user.png"} className="block sm:hidden w-12 h-12 mp:ml-28 mm:ml-44" alt="User" />
+        {/* Logo do CONECTECH */}
+        <img src="images/img-logo-pree.png" className="mp:ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-28 w-40" alt="Logo" />
+        {/* Imagem do User Pequena */}
         <img className="w-8 object-cover cursor-pointer mp:mt-2 mp:-mr-8 mm:mr-0 md:-mr-8 lg:mr-14" src={profileImage || 'images/user.png'} alt="Profile" />
       </HeaderHome>
       <div className="mp:ml-24 mt-24 flex flex-col items-center">
@@ -114,7 +114,7 @@ const Perfil = () => {
         <div className="w-full flex flex-col items-center gap-3 mt-8 lg:mt-12 xl:mt-0">
           <img src={profileImage || "images/user.png"} className="w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 3xl:h-36 3xl:w-36" alt="Profile" />
           <p className="font-poppins text-lg mb-0">{userProfile?.name}</p>
-            <p className="text-[#747688] text-xs 2xl:text-G 2xl:text-base mt-0">{userProfile?.username}</p>
+          <p className="text-[#747688] text-xs 2xl:text-G 2xl:text-base mt-0">{userProfile?.username}</p>
           <div className="flex justify-center">
             <div className="flex flex-col items-center justify-center">
               <p className="font-poppins text-sm 2xl:text-base 3xl:text-lg">{userProfile?.following.length}</p>
@@ -142,7 +142,7 @@ const Perfil = () => {
           </button>
         </div>
         <div id="titulo-itens-explorar" className="flex mr-2 mt-4 xl:mt-16 mb-4 py-3 gap-8 w-full items-center justify-center border-[0.1px] border-[#AFAFAF8C] shadow-md rounded-md mm:w-[85%] sm:w-[80%] lg:w-[60%] xl:w-[45%] 2xl:w-[40%] 3xl:w-[30%]">
-          {['Sobre', 'Eventos', 'Grupos'].map((item, index) => (
+          {['Sobre', 'Eventos', 'Forums'].map((item, index) => (
             <p
               key={index}
               className={`${activeIndex === index ? 'text-[#000]' : 'text-[#909090]'} cursor-pointer font-poppins text-xs mm:text-sm sm:text-sm lg:text-sm 2xl:text-base 3xl:text-lg`}
@@ -161,9 +161,9 @@ const Perfil = () => {
           <div className="flex flex-col gap-2 3xl:gap-5 mb-5 items-start w-full mm:w-[85%] sm:w-[80%] lg:w-[60%] xl:w-[45%] 2xl:w-[40%] 3xl:w-[30%]">
             <p className="font-poppins font-medium 3xl:text-xl">Eventos Participados</p>
             {userProfile?.eventsParticipatedIn.length > 0 ? (
-              userProfile.eventsParticipatedIn.map((event, index) => (
+              userProfile.eventsParticipatedIn.map((forum, index) => (
                 <div key={index} className="flex items-center gap-2 bg-[#F1F1F1] px-3 py-1 rounded-md">
-                  <p className="text-xs 2xl:text-sm">{event.name}</p>
+                  <p className="text-xs 2xl:text-sm">{forum.title}</p>
                 </div>
               ))
             ) : (
@@ -173,11 +173,11 @@ const Perfil = () => {
         )}
         {activeIndex === 2 && (
           <div className="flex flex-col gap-2 3xl:gap-5 mb-5 items-start w-full mm:w-[85%] sm:w-[80%] lg:w-[60%] xl:w-[45%] 2xl:w-[40%] 3xl:w-[30%]">
-            <p className="font-poppins font-medium 3xl:text-xl">Grupos Participados</p>
+            <p className="font-poppins font-medium 3xl:text-xl">Forums Participados</p>
             {userProfile?.forums.length > 0 ? (
               userProfile.forums.map((forum, index) => (
                 <div key={index} className="flex items-center gap-2 bg-[#F1F1F1] px-3 py-1 rounded-md">
-                  <p className="text-xs 2xl:text-sm">{forum.name}</p>
+                  <p className="text-xs 2xl:text-sm">{forum.title}</p>
                 </div>
               ))
             ) : (
