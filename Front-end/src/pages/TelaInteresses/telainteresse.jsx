@@ -67,7 +67,7 @@ const TelaInteresses = () => {
 
         setMeusInteresses([]);
         setTimeout(() => {
-            navigate('/home');
+            navigate('/criarBio');
         }, 7000);
     };
 

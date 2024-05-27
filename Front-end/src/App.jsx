@@ -3,6 +3,7 @@ import TelaInicial from './pages/TelaInicial/telainicial'
 import Home from './pages/Home/home'
 import TelaLogin from './pages/TelaLogin/telalogin'
 import TelaCadastro from './pages/TelaCadastro/index'
+import TelaCriarBio from './pages/TelaCriarBio/index'
 import TelaInteresses from './pages/TelaInteresses/telainteresse'
 import Eventos from './pages/Eventos/Eventos'
 import Favoritos from './pages/Favoritos/Favoritos'
@@ -24,6 +25,7 @@ function App() {
               <Route path='/home' element={<Home/>}/>
               <Route path='/login' element={<TelaLogin/>}/>
               <Route path='/cadastro' element={<TelaCadastro/>}/>
+              <Route path='/criarbio' element={<TelaCriarBio/>}/>
               <Route path='/interesses' element={<TelaInteresses/>}/>
               <Route path='/eventos' element={<Eventos/>}/>
               <Route path='/favoritos' element={<Favoritos/>}/>
