@@ -3,13 +3,27 @@ import Header from "../../components/Header";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useNavigate } from 'react-router-dom';
 import data from '../../../interests.json';
-import { getUserById, createInterest, addInterestToUser } from '../../services/userService';
+import { createInterest, addInterestToUser } from '../../services/userService';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TelaInteresses = () => {
     const [meusInteresses, setMeusInteresses] = useState(() => {
         const savedInteresses = localStorage.getItem('meusInteresses');
         return savedInteresses ? JSON.parse(savedInteresses) : [];
     });
+
+    const notifySuccess = (mensagem) => {
+        toast.success(mensagem, {
+            position: "top-right"
+        });
+    };
+
+    const notifyError = (mensagem) => {
+        toast.error(mensagem, {
+            position: "top-right"
+        });
+    };
 
     const navigate = useNavigate();
     const userId = localStorage.getItem('userId');
@@ -26,37 +40,41 @@ const TelaInteresses = () => {
         }
     };
 
-    const enviarInteresses = async () => {
-        alert("Seus interesses escolhidos são: " + meusInteresses.join(", "));
-        
+    const enviarInteresses = async (notifySuccess, notifyError) => {
+        const erros = [];
         for (let interesse of meusInteresses) {
-          try {
-            // Tenta adicionar o interesse ao usuário
-            await addInterestToUser(userId, interesse);
-          } catch (error) {
-            if (error.message === "Interesse não encontrado") {
-              // Se o interesse não for encontrado, cria o interesse e adiciona ao usuário
-              try {
-                await createInterest(interesse);
+            try {
                 await addInterestToUser(userId, interesse);
-              } catch (creationError) {
-                console.error("Erro ao criar e adicionar interesse:", creationError);
-              }
-            } else {
-              // Se for outro erro, mostra no console
-              console.error("Erro ao adicionar interesse:", error);
+            } catch (error) {
+                if (error.message === "Interesse não encontrado") {
+                    try {
+                        await createInterest(interesse);
+                        await addInterestToUser(userId, interesse);
+                    } catch (creationError) {
+                        erros.push(`Erro ao criar e adicionar interesse "${interesse}": ${creationError.message}`);
+                    }
+                } else {
+                    erros.push(`Erro ao adicionar interesse "${interesse}": ${error.message}`);
+                }
             }
-          }
         }
-        
+
+        if (erros.length > 0) {
+            notifyError(erros.join(', '));
+        } else {
+            notifySuccess('Todos os interesses foram adicionados com sucesso!');
+        }
+
         setMeusInteresses([]);
-        navigate('/home');
-      };
+        setTimeout(() => {
+            navigate('/home');
+        }, 7000);
+    };
 
     return (
         <>
             <Header bgColor='bg-[#003d71]'>
-                <img className="h-14" src='images/img-ico.svg' alt="Logo"/>
+                <img className="h-14" src='images/img-ico.svg' alt="Logo" />
             </Header>
             <div className="bg-gradient-to-t from-[#00001d] to-[#003d71] min-h-screen flex flex-col justify-center items-center mp:mt-24 mg:mt-20">
                 <div className="flex w-[70%] flex-col justify-start gap-2 mt-10 ">
@@ -71,11 +89,11 @@ const TelaInteresses = () => {
                 </div>
                 <ul className="w-[70%] flex flex-wrap flex-row mt-20 gap-4 mb-16">
                     {data.map((item) => (
-                        <li 
+                        <li
                             key={item.id}
-                            className={`${meusInteresses.includes(item.nome) ? 'bg-[#fff]' : 'bg-[#31324B]'} 
-                                        ${meusInteresses.includes(item.nome) ? 'text-[#000]' : 'text-[#fff]'} 
-                                        font-poppins cursor-pointer text-base rounded-3xl border border-[#D8D8D8] 
+                            className={`${meusInteresses.includes(item.nome) ? 'bg-[#fff]' : 'bg-[#31324B]'}
+                                        ${meusInteresses.includes(item.nome) ? 'text-[#000]' : 'text-[#fff]'}
+                                        font-poppins cursor-pointer text-base rounded-3xl border border-[#D8D8D8]
                                         py-2 px-4`}
                             onClick={() => manipulaInteresse(item.nome)}
                         >
@@ -83,10 +101,11 @@ const TelaInteresses = () => {
                         </li>
                     ))}
                 </ul>
-                <button className="conectech-button mp:mb-10 mp:px-24 mg:py-3 mg:px-32 mg:text-lg" onClick={enviarInteresses}>
+                <button className="conectech-button mp:mb-10 mp:px-24 mg:py-3 mg:px-32 mg:text-lg" onClick={() => enviarInteresses(notifySuccess, notifyError)}>
                     Enviar
                 </button>
             </div>
+            <ToastContainer />
         </>
     );
 };
