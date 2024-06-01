@@ -66,6 +66,9 @@ function Form() {
         .then(response => {
             notifySucess("Entrando...")
             console.log(response.data)
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('userName', user.name);
+            localStorage.setItem('userEmail', user.email);
             setUser(response.data)
             setTimeout(() => {
                 navigate('/home')

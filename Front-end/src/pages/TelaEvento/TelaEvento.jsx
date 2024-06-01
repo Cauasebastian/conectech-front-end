@@ -79,7 +79,7 @@ const TelaEvento = () => {
                     
                     </div>
                     <div className='w-[90%] flex items-center border mt-3 mb-5 border-[#DDDDDDC4] py-2 px-2 rounded-md col-span-3 gap-2 3xl:mt-7 3xl:gap-4 '>
-                        <img src="images/img-user.jpg" className='h-10 w-10 rounded-md object-cover 2xl:h-14 2xl:w-14 3xl:h-16 3xl:w-16' alt="" />
+                        <img src={evento.fotoOrganizador} className='h-10 w-10 rounded-md object-cover 2xl:h-14 2xl:w-14 3xl:h-16 3xl:w-16' alt="" />
                         <div>
                             <p className='text-xs font-poppins lg:text-base 2xl:text-xl 3xl:text-2xl'>{evento.organizador}</p>
                             <p className='text-[0.68rem] text-[#706E8F] lg:text-sm 2xl:text-base 3xl:text-lg'>Organizador</p>
