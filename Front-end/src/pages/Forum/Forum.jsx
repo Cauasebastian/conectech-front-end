@@ -1,32 +1,51 @@
-import HeaderHome from "../../components/HeaderHome/HeaderHome"
-import Sidebar from "../../components/Sidebar"
-import { useNavigate } from "react-router-dom"
-import dataPost from "../../../postsForum.json"
+import HeaderHome from "../../components/HeaderHome/HeaderHome";
+import Sidebar from "../../components/Sidebar";
+import { useNavigate } from "react-router-dom";
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
-import { useState } from "react";
-import { useEffect } from "react";
-import dataUser from '../../../usersExplorer.json'
-
+import { useState, useEffect } from "react";
+import axios from 'axios';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import dataUser from '../../../usersExplorer.json';
+import {ToastContainer, toast} from 'react-toastify'
 
 const Forum = () => {
     const [posts, setPosts] = useState([]);
+    const [addUserState, setAddUserState] = useState({});
+    const [curtidas, setCurtidas] = useState([]);
+    const [numCurtidas, setNumCurtidas] = useState([]);
+    const [newPost, setNewPost] = useState({ title: '', description: '' });
+    const [isCreating, setIsCreating] = useState(false);
+    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
+    const notifySucess = (mensagem) => {
+        toast.success(mensagem, {
+            position:"top-right"
+        });
+    }
+
+    const notifyError = (mensagem) => {
+        toast.error(mensagem, {
+            position:"top-right"
+        })
+    }
+    
     useEffect(() => {
         fetchPosts();
     }, []);
 
     const fetchPosts = async () => {
         try {
-            const response = await fetch('http://localhost:8080/posts');
-            const postData = await response.json();
+            const response = await axios.get('http://localhost:8080/posts');
+            const postData = response.data;
 
             const postsWithAuthorDetails = await Promise.all(postData.map(async (post) => {
-                const authorResponse = await fetch(`http://localhost:8080/users/${post.authorId}`);
-                const authorData = await authorResponse.json();
+                const authorResponse = await axios.get(`http://localhost:8080/users/${post.authorId}`);
+                const authorData = authorResponse.data;
 
-                const imageResponse = await fetch(`http://localhost:8080/users/${post.authorId}/image`);
-                const imageBlob = await imageResponse.blob();
-                const imageUrl = URL.createObjectURL(imageBlob);
+                const imageResponse = await axios.get(`http://localhost:8080/users/${post.authorId}/image`, { responseType: 'blob' });
+                const imageUrl = URL.createObjectURL(imageResponse.data);
 
                 return {
                     ...post,
@@ -39,56 +58,73 @@ const Forum = () => {
             setPosts(postsWithAuthorDetails);
             setAddUserState(postsWithAuthorDetails.map(() => false));
             setCurtidas(postsWithAuthorDetails.map(() => false));
+            setNumCurtidas(postsWithAuthorDetails.map(post => post.likes));
+            notifySucess('Post carregados com sucesso!');
         } catch (error) {
+            notifyError('Erro ao carregar posts');
             console.error('Error fetching posts or author details:', error);
         }
     };
-    // const [posts, setPosts] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get("http://localhost:8080/posts")
-    //     .then(resposta => {
-    //         setPosts(resposta.data)
-    //     })
-    //     .catch(error => {
-    //         console.error('Erro ao carregar os posts: ' , error)
-    //     })
-    // }, [])
-    const [addUserState, setAddUserState] = useState({});
+    const handleCreatePost = async () => {
+        try {
+            setIsCreating(true);
+            const userId = localStorage.getItem('userId');
+            await axios.post(`http://localhost:8080/users/${userId}/posts`, newPost);
+            setNewPost({ title: '', description: '' });
+            handleCloseDialog();
+            notifySucess('Post criado com sucesso!');
+            fetchPosts(); // Refresh posts after creating a new one
+        } catch (error) {
+            console.error('Error creating post:', error);
+        } finally {
+            setIsCreating(false);
+        }
+    };
+
     const toggleAddUser = (itemId) => {
         setAddUserState(prevState => ({
             ...prevState,
             [itemId]: !prevState[itemId]
         }));
     };
-  
-    const [countComents, setCountComents] = useState(12)
 
-    const [curtidas, setCurtidas] = useState(dataPost.map(() => false));
-    const [numCurtidas, setNumCurtidas] = useState(dataPost.map(() => 25));
-    
-    // Função para lidar com a ação de curtir/descurtir um post
     const curtirEDescurtirPost = (postId) => {
         setCurtidas(prevCurtidas => {
             const updatedCurtidas = [...prevCurtidas];
-            updatedCurtidas[postId] = !updatedCurtidas[postId]; // Inverte o estado de curtida do post
+            updatedCurtidas[postId] = !updatedCurtidas[postId];
             return updatedCurtidas;
         });
 
-        // Atualiza o número de curtidas do post
         setNumCurtidas(prevNumCurtidas => {
             const updatedNumCurtidas = [...prevNumCurtidas];
-            updatedNumCurtidas[postId] += curtidas[postId] ? -1 : 1; // Incrementa ou decrementa o número de curtidas dependendo do estado anterior
+            updatedNumCurtidas[postId] += curtidas[postId] ? -1 : 1;
             return updatedNumCurtidas;
         });
     };
-    const navigate = useNavigate();
-    const goToHomePage = () => {
-        navigate('/home')
-    }
 
-    
-    
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const goToHomePage = () => {
+        navigate('/home');
+    };
+
+    const handleOpenDialog = () => {
+        setOpen(true);
+    };
+
+    const handleCloseDialog = () => {
+        setOpen(false);
+    };
+
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setNewPost(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
     return(
         <div className="min-w-screen min-h-screen bg-[#fbfbfb] flex flex-col">
            <Sidebar/>
@@ -117,7 +153,8 @@ const Forum = () => {
                         <input 
                             type="text" 
                             className="rounded-3xl border border-[#888888] px-4 py-2 w-full"
-                            placeholder="Escreva algo..." />
+                            placeholder="Escreva algo..."
+                            onClick={handleOpenDialog} />
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
                             className="w-6 h-6 text-[#888888] absolute right-[0.5rem]">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -154,7 +191,8 @@ const Forum = () => {
                                                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                                              </svg>
                   }
-                            </div>    
+                            </div> 
+                            <p className="col-span-4 text-[12px] mm:text-[13px] sm:text-[15px] md:text-[18px] xl:text-lg 3xl:text-xl">{post.title}</p>
                             <p className="col-span-4 text-[12px] mm:text-[13px] sm:text-[15px] md:text-[18px] xl:text-lg 3xl:text-xl">{post.description}</p>
                             <div className="flex col-span-4 items-center justify-between">
                                 <div className=" flex gap-4 ">
@@ -199,6 +237,43 @@ const Forum = () => {
                     )
                 })}
                 </div>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description">
+                    <DialogActions className='flex flex-col bg-[#FFFFFF] gap-4 items-center justify-center'>
+                        <div className='flex flex-col bg-[#F3F3F3] px-1 py-1 gap-2'>
+                            <div className='flex gap-2 items-center'>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                                    <path fillRule="evenodd" d="M4.5 5.25A3.75 3.75 0 0 1 8.25 1.5h7.5a3.75 3.75 0 0 1 3.75 3.75v13.5a3.75 3.75 0 0 1-3.75 3.75h-7.5a3.75 3.75 0 0 1-3.75-3.75V5.25ZM8.25 3A2.25 2.25 0 0 0 6 5.25v13.5A2.25 2.25 0 0 0 8.25 21h7.5A2.25 2.25 0 0 0 18 18.75V5.25A2.25 2.25 0 0 0 15.75 3h-7.5ZM9 7.5h6a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5Zm0 3h6a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5Zm6 3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5h6Z" clipRule="evenodd" />
+                                </svg>
+                                <p className='text-base text-[#000000] font-poppins font-medium'>Adicionar Post</p>
+                            </div>
+                            <input
+                                type='text'
+                                className='w-[300px] bg-[#FFFFFF] border-none outline-none rounded-md h-8 p-2 text-sm font-poppins'
+                                placeholder='Nome do post'
+                                value={newPost.title}
+                                onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+                            />
+                            <textarea
+                                className='w-[300px] bg-[#FFFFFF] border-none outline-none rounded-md h-24 p-2 text-sm font-poppins resize-none'
+                                placeholder='Descrição'
+                                value={newPost.description}
+                                onChange={(e) => setNewPost({ ...newPost, description: e.target.value })}
+                            />
+                        </div>
+                        <div className='flex justify-between w-full'>
+                            <button onClick={handleClose} className='bg-[#FF0000] text-[#FFFFFF] font-poppins px-4 py-2 rounded-md'>
+                                Cancelar
+                            </button>
+                            <button onClick={handleCreatePost} className='bg-[#4A91A5] text-[#FFFFFF] font-poppins px-4 py-2 rounded-md' disabled={isCreating}>
+                                {isCreating ? 'Criando...' : 'Criar Post'}
+                            </button>
+                        </div>
+                    </DialogActions>
+                </Dialog>
                 {/*DIV PARA OS Usuarios*/}
                 <div className="col-span-1 hidden xl:flex flex-col mr-20">
                     <div className="w-full">

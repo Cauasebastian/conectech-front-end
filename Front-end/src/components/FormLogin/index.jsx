@@ -62,31 +62,26 @@ function Form() {
 
     const onSubmitLogin = (email, senha) => {
         
-     axios.post(`http://localhost:8080/users/login?email=${email}&password=${senha}`)
+        axios.post(`http://localhost:8080/users/login?email=${email}&password=${password}`)
         .then(response => {
-            notifySucess("Entrando...")
-            console.log(response.data)
-            localStorage.setItem('userId', userId);
-            localStorage.setItem('userName', user.name);
-            localStorage.setItem('userEmail', user.email);
-            setUser(response.data)
+            const userData = response.data;
+            notifySucess("Entrando...");
+            console.log(userData);
+            localStorage.setItem('userId', userData.id);
+            localStorage.setItem('userName', userData.name);
+            localStorage.setItem('userEmail', userData.email);
+            setUser(userData);
             setTimeout(() => {
-                navigate('/home')
-            }, 5000)
-            
-            
+                navigate('/home');
+            }, 5000);
         })
         .catch(error => {
-            setEmail('')
-            setPassword('')
-            notifyError("Conta não encontrada!")
-            console.error('Erro ao carregar a conta: ' , error)
-            
-        })
-        
-        
-        
-        
+            setEmail('');
+            setPassword('');
+            notifyError("Conta não encontrada!");
+            console.error('Erro ao carregar a conta: ', error);
+        });
+      
     }
 
     
