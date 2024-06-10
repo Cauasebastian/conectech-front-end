@@ -8,6 +8,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 
 const Eventos = () => {
+    
+    const API_URL = process.env.VITE_API_URL;
+
     const [eventos, setEventos] = useState([]);
     const [meusInteresses, setMeusInteresses] = useState([]);
     const [activeIndex, setActiveIndex] = useState(null);
@@ -31,29 +34,30 @@ const Eventos = () => {
 
     const fetchEventsWithAuthorDetails = async () => {
         try {
-            const response = await fetch('http://localhost:8080/events');
+            const response = await fetch(`${API_URL}/events`);
             const eventsData = await response.json();
-
+    
             const eventsWithAuthorDetails = await Promise.all(eventsData.map(async (event) => {
-                const authorResponse = await fetch(`http://localhost:8080/users/name/${event.authorName}`);
+                const authorResponse = await fetch(`${API_URL}/users/name/${event.authorName}`);
                 const authorData = await authorResponse.json();
-
-                const imageResponse = await fetch(`http://localhost:8080/users/${authorData.id}/image`);
+    
+                const imageResponse = await fetch(`${API_URL}/users/${authorData.id}/image`);
                 const imageBlob = await imageResponse.blob();
                 const imageUrl = URL.createObjectURL(imageBlob);
-
-                const eventImageResponse = await fetch(`http://localhost:8080/events/${event.id}/image`);
+    
+                const eventImageResponse = await fetch(`${API_URL}/events/${event.id}/image`);
                 const eventImageBlob = await eventImageResponse.blob();
                 const eventImageUrl = URL.createObjectURL(eventImageBlob);
-
+    
                 return {
                     ...event,
+                    idDoEvento: event.id,
                     authorName: authorData.name,
                     fotoOrganizador: imageUrl,
-                    eventImageUrl: eventImageUrl
+                    eventImageUrl: eventImageUrl,
                 };
             }));
-
+    
             setEventos(eventsWithAuthorDetails);
         } catch (error) {
             console.error('Error fetching events or author details:', error);
@@ -64,7 +68,7 @@ const Eventos = () => {
         try {
             setIsCreating(true); // Desabilitar o botão durante a criação
             console.log('Creating event with data:', newEvent);
-            const response = await axios.post(`http://localhost:8080/events/${localStorage.getItem('userId')}/create`, newEvent);
+            const response = await axios.post(`${API_URL}/events/${localStorage.getItem('userId')}/create`, newEvent);
             const eventId = response.data.id; // Ensure the response includes the event ID
             console.log('Event created with ID:', eventId);
     
@@ -73,7 +77,7 @@ const Eventos = () => {
                 formData.append('image', selectedFile);
                 console.log('Uploading image for event:', eventId);
     
-                const uploadResponse = await axios.post(`http://localhost:8080/events/${eventId}/uploadImage`, formData, {
+                const uploadResponse = await axios.post(`${API_URL}/events/${eventId}/uploadImage`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 console.log('Image uploaded successfully', uploadResponse.data);
@@ -92,7 +96,6 @@ const Eventos = () => {
             setIsCreating(false); // Reabilitar o botão após a criação
         }
     };
-    
     
     
 
@@ -119,6 +122,9 @@ const Eventos = () => {
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
     };
+    const goToPerfilPage = () => {
+        navigate('/perfil');
+    };
 
     return (
         <div className='w-screen min-h-screen flex'>
@@ -126,7 +132,7 @@ const Eventos = () => {
             <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
                 <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
+                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png' onClick={goToPerfilPage}/>
             </HeaderHome>
             <div className="mp:ml-4 xl:ml-32 mt-24 flex flex-col items-center w-full">
                 <div className="w-full flex justify-between items-center">
@@ -150,9 +156,16 @@ const Eventos = () => {
                     {eventos.map((evento) => (
                         <div className='col-span-6 xl:col-span-2 flex' key={evento.id}>
                             <Evento 
-                                titulo={evento.title} 
+                                titulo={evento.title}
+                                id={evento.idDoEvento} // Adicione o id do evento
                                 imagem={evento.eventImageUrl} 
-                                data={evento.date} 
+                                data={new Date(evento.date).toLocaleString('pt-BR', {
+                                    day: '2-digit',
+                                    month: '2-digit',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                })} 
                                 local={evento.location}
                                 organizador={evento.authorName}
                                 totalParticipantes={evento.participantsCount}

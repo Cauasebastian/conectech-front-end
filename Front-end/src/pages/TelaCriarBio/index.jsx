@@ -6,6 +6,7 @@ import axios from 'axios';
 import useUserContext from '../../hooks/useUserContext';
 
 const TelaCriarBio = () => {
+    const API_URL = process.env.VITE_API_URL; // constante com a URL base da API
     const navigate = useNavigate();
     const notifySucess = (mensagem) => {
         toast.success(mensagem, {
@@ -55,7 +56,7 @@ const TelaCriarBio = () => {
     };
 
     const integracaoAPI = (user) => {
-        return axios.put(`http://localhost:8080/users/${localStorage.getItem('userId')}`, user)
+        return axios.put(`${API_URL}/users/${localStorage.getItem('userId')}`, user)
             .then(response => {
                 notifySucess('Conta atualizada com sucesso!');
                 setTimeout(() => {
@@ -80,7 +81,7 @@ const TelaCriarBio = () => {
         const formData = new FormData();
         formData.append('image', file);
 
-        return fetch(`http://localhost:8080/users/${localStorage.getItem('userId')}/uploadImage`, {
+        return fetch(`${API_URL}/users/${localStorage.getItem('userId')}/uploadImage`, {
             method: 'POST',
             body: formData
         })
@@ -102,7 +103,7 @@ const TelaCriarBio = () => {
     };
 
     const loadImage = (userId) => {
-        fetch(`http://localhost:8080/users/${userId}/image`)
+        fetch(`${API_URL}/users/${userId}/image`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Error loading image');

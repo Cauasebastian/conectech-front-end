@@ -16,6 +16,10 @@ import axios from "axios";
 
 
 const TelaCadastro = () => {
+    
+
+    const API_URL = process.env.VITE_API_URL; // constante com a URL base da API
+
     const navigate = useNavigate()
     const notifySucess = (mensagem) => {
         toast.success(mensagem, {
@@ -70,7 +74,7 @@ const TelaCadastro = () => {
     },[newUser])
 
     const integracaoAPI = (user) => {
-        axios.post('http://localhost:8080/users', {
+        axios.post(`${API_URL}/users`, {
             name: user.name,
             email: user.email,
             dateOfBirth: user.dateOfBirth,
