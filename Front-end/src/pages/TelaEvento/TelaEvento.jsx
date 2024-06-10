@@ -48,10 +48,9 @@ const handleSubscribe = async (eventId) => {  // Recebe o evento como argumento
              <Sidebar/>
              <HeaderHome>
        
-
-                <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-36 mm:ml-44' alt="" />
-                <img src="images/img-logo-pree.png" className='mp:ml-28 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-28  w-40' alt="" onClick={goToHomePage} />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png' onClick={goToPerfilPage}/>
+             <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
+                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
+                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png' alt="" onClick={goToPerfilPage}/>
             </HeaderHome>
              <div className="mp:ml-24 mt-20 md:mt-14 lg:-mt-20 xl:-mt-72 2xl:-mt-[23rem] 3xl:-mt-[31rem] flex flex-col items-center">
                 <img src="images/circ-res.png" alt="" className='-z-1 mg:w-full '/>

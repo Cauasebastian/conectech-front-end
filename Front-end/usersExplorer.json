@@ -7,27 +7,27 @@
     },
     {
         
-        "fotoPerfil": "images/img-user.jpg",
+        "fotoPerfil": "https://avatars.githubusercontent.com/u/110771720?v=4",
         "nome": "Lara Nunes",
+        "tags":["Design", "UI", "Ux"]
+    },
+    {
+        
+        "fotoPerfil": "https://avatars.githubusercontent.com/u/118924901?v=4",
+        "nome": "Thales Thiago",
         "tags":["JS", "React", "Java"]
     },
     {
         
-        "fotoPerfil": "images/img-user.jpg",
-        "nome": "Larinha Linda",
-        "tags":["JS", "React", "Java"]
+        "fotoPerfil": "images/helena.jpg",
+        "nome": "Maria Helena",
+        "tags":["UI", "Design", "Javascript"]
     },
     {
         
-        "fotoPerfil": "images/img-user.jpg",
-        "nome": "Lara Nunes",
-        "tags":["JS", "React", "Java"]
-    },
-    {
-        
-        "fotoPerfil": "images/img-user.jpg",
-        "nome": "Lara Nunes",
-        "tags":["JS", "React", "Java"]
+        "fotoPerfil": "https://avatars.githubusercontent.com/u/133614515?v=4",
+        "nome": "Cauã Sebastian",
+        "tags":["Java", "Back-End", "Web"]
     }
     
 ]
