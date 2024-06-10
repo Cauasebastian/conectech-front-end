@@ -23,7 +23,7 @@ const Sidebar = () => {
     
     const showSidebar = () => setSidebar(!sidebar) 
     return(
-        <nav id="sidebar" className={`md:h-screen bg-[#ffffff]   flex flex-col justify-between  fixed z-50    ${sidebar ? 'min-w-[15%] h-screen' : 'min-w-3 h-[18%]'} ml-0 `} >
+        <nav id="sidebar" className={`md:h-screen bg-[#ffffff]   flex flex-col justify-between  fixed z-50    ${sidebar ? 'min-w-[15%] h-screen' : 'min-w-3 h-[10%]'} ml-0 `} >
             <div id="sidebar-content" className={`p-3 flex  flex-col  items-center  `}>
                 <div id="foto-conec"  className="flex items-center gap-12">
                     {sidebar && <img className="w-32" src='images/img-logo-pree.png'/>}

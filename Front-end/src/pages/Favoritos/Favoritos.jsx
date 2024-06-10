@@ -27,11 +27,11 @@ const Favoritos = () => {
         <div className='w-full min-h-screen overflow-y-hidden flex bg-[#fbfbfb]'>
             <Sidebar/>
             <HeaderHome>
-                <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-44' alt="" />
-                <img src="images/img-logo-pree.png" className='mp:ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-28  w-40' alt="" />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-8 mm:mr-0 md:-mr-8 lg:mr-14 ' src='images/user.png' />
+                <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
+                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
+                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
             </HeaderHome>
-            <div className="mp:ml-24 mt-24 flex flex-col items-center">
+            <div className="mp:ml-24 xl:ml-32 mt-24 flex flex-col items-center">
                 <div className="w-full flex mp:flex-col mp:items-start justify-between items-center">
                     <div className="flex items-center gap-2  xl:ml-3 xl:mt-5 3xl:ml-0 cursor-pointer" onClick={goToHomePage}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
@@ -65,7 +65,7 @@ const Favoritos = () => {
                         ))}  
                                             
                 </div>
-                <div className='grid grid-cols-6 xl:grid-cols-8 gap-3 mt-3 lg:mt-10 -ml-5 mm:-ml-4  w-full 2xl:mb-10'>
+                <div className='grid grid-cols-6 xl:grid-cols-8 gap-3 mt-3 lg:mt-10 -ml-5 mm:-ml-4   w-full 2xl:mb-10'>
                     {data.map((evento) => (
                             <div className='col-span-6  xl:col-span-2 flex ' key={evento.id}>
                                  <Evento 

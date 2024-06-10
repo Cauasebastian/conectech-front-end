@@ -124,11 +124,11 @@ const Eventos = () => {
         <div className='w-screen min-h-screen flex'>
             <Sidebar />
             <HeaderHome>
-                <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-44' alt="Conectech" />
-                <img src="images/img-logo-pree.png" className='mp:ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-28 w-40' alt="Logo Pree" onClick={goToHomePage} />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2 mp:-mr-8 mm:mr-0 md:-mr-8 lg:mr-14' src='images/user.png' alt="User" />
+                <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
+                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
+                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
             </HeaderHome>
-            <div className="mp:ml-4 mt-24 flex flex-col items-center w-full">
+            <div className="mp:ml-4 xl:ml-32 mt-24 flex flex-col items-center w-full">
                 <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-2 xl:ml-3 xl:mt-5 3xl:ml-0 cursor-pointer" onClick={goToHomePage}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 sm:h-6 sm:w-6 lg:w-8 lg:h-8 3xl:h-12 3xl:w-12 text-[#4A91A5]">
