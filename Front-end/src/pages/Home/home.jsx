@@ -57,7 +57,7 @@ const Home = () => {
             <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
                 <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
-                <img className=" rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8" src={profileImage || 'images/user.png'} alt="Profile" />
+                <img className=" rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8" src={profileImage || 'images/user.png'} alt="Profile" onClick={goToPerfilPage} />
                 </HeaderHome>
             <div id="container-home" className="lg:grid lg:grid-cols-4 lg:grid-rows-2 ">
                 <div className="col-span-3 lg:row-start-1 lg:row-end-2 ">
