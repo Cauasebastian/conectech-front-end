@@ -15,6 +15,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 const Perfil = () => {
+  const API_URL = process.env.VITE_API_URL; // Access the API URL
+
   const userId = localStorage.getItem('userId'); // Substitute with the actual user ID
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -67,14 +69,14 @@ const Perfil = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/users/${userId}/posts`);
+      const response = await axios.get(`${API_URL}/users/${userId}/posts`);
       const postData = response.data;
 
       const postsWithAuthorDetails = await Promise.all(postData.map(async (post) => {
-        const authorResponse = await axios.get(`http://localhost:8080/users/${post.authorId}`);
+        const authorResponse = await axios.get(`${API_URL}/users/${post.authorId}`);
         const authorData = authorResponse.data;
 
-        const imageResponse = await axios.get(`http://localhost:8080/users/${post.authorId}/image`, { responseType: 'blob' });
+        const imageResponse = await axios.get(`${API_URL}/users/${post.authorId}/image`, { responseType: 'blob' });
         const imageUrl = URL.createObjectURL(imageResponse.data);
 
         return {
@@ -97,7 +99,7 @@ const Perfil = () => {
   const handleEditPost = async () => {
     setIsCreating(true);
     try {
-      await axios.put(`http://localhost:8080/users/${userId}/posts/${editingPostId}`, newPost);
+      await axios.put(`${API_URL}/users/${userId}/posts/${editingPostId}`, newPost);
       handleCloseDialog();
     } catch (error) {
       console.error("Error editing post:", error);
@@ -113,7 +115,7 @@ const Perfil = () => {
       handleDeleteDialogClose();
     }
     try {
-      await axios.delete(`http://localhost:8080/users/${userId}/posts/${deletingPost}`);
+      await axios.delete(`${API_URL}/users/${userId}/posts/${deletingPost}`);
       notifySuccess('Post excluído com sucesso');
       handleDeleteDialogClose();
       fetchPosts();

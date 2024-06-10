@@ -1,7 +1,14 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import HeaderHome from '../../components/HeaderHome/HeaderHome';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+
 const TelaEvento = () => {
+    
+    const API_URL = process.env.VITE_API_URL;
+
+
   const location = useLocation();
   const navigate = useNavigate()
  
@@ -9,6 +16,31 @@ const TelaEvento = () => {
   const goToHomePage = () => {
     navigate('/home')
   }
+  const notifySucess = (mensagem) => {
+    toast.success(mensagem, {
+        position:"top-right"
+    });
+}
+
+const notifyError = (mensagem) => {
+    toast.error(mensagem, {
+        position:"top-right"
+    })
+}
+const handleSubscribe = async (eventId) => {  // Recebe o evento como argumento
+    try {
+        console.log("Dados do evento:", evento.id);
+        const response = await axios.post(`${API_URL}/eventos/${eventId}/participants/${localStorage.getItem('userId')}`);
+      notifySucess('Inscrição realizada com sucesso!');
+    } catch (error) {
+      notifyError('Erro ao realizar inscrição');
+    }
+  };
+
+    const goToPerfilPage = () => {
+        navigate('/perfil');
+    };
+
 
   const {evento} = location.state
     return(
@@ -19,8 +51,8 @@ const TelaEvento = () => {
 
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-36 mm:ml-44' alt="" />
                 <img src="images/img-logo-pree.png" className='mp:ml-28 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-28  w-40' alt="" onClick={goToHomePage} />
-                <img className='mp:w-7 object-cover cursor-pointer mp:mr-0 mm:-mr-3 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
-             </HeaderHome>
+                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png' onClick={goToPerfilPage}/>
+            </HeaderHome>
              <div className="mp:ml-24 mt-20 md:mt-14 lg:-mt-20 xl:-mt-72 2xl:-mt-[23rem] 3xl:-mt-[31rem] flex flex-col items-center">
                 <img src="images/circ-res.png" alt="" className='-z-1 mg:w-full '/>
                 <div className="w-full flex justify-between items-center -mt-36 mm:-mt-48 mg:-mt-56 sm:-mt-[17rem] md:-mt-[19rem] 3xl:-mt-[27rem]">
@@ -94,7 +126,7 @@ const TelaEvento = () => {
                     <p className='font-poppins text-xs sm:text-sm lg:text-base 2xl:text-lg 3xl:text-xl'>{evento.descricaoEvento}</p>
                 </div>
                 <div className='w-full flex justify-center items-center mb-5 '>
-                    <button className='flex justify-center items-center bg-[#074261] rounded-md px-7 py-1 gap-3 2xl:px-16 2xl:py-2 3xl:px-20 3xl:py-3'>
+                <button className='flex justify-center items-center bg-[#074261] rounded-md px-7 py-1 gap-3 2xl:px-16 2xl:py-2 3xl:px-20 3xl:py-3' onClick={() => handleSubscribe(evento.id)}>
                         <p className='font-poppins text-[#FFFFFF] text-sm lg:text-base 2xl:text-xl 3xl:text-2xl'>Me inscrever</p>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
                             className="size-6 text-[#fff] 3xl:size-8">

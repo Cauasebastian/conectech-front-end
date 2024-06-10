@@ -5,6 +5,10 @@ import {useNavigate} from 'react-router-dom'
 
 
 const EventosProximos = () => {
+    
+    const API_URL = process.env.VITE_API_URL;
+    const [data, setData] = useState(new Date());
+
     const navigate = useNavigate();
     const [eventosVisiveis, setEventosVisiveis] = useState([]);
 
@@ -14,18 +18,18 @@ const EventosProximos = () => {
 
     const fetchEventsWithAuthorDetails = async () => {
         try {
-            const response = await fetch('http://localhost:8080/events');
+            const response = await fetch(`${API_URL}/events`);
             const eventsData = await response.json();
 
             const eventsWithAuthorDetails = await Promise.all(eventsData.slice(0, 3).map(async (event) => {
-                const authorResponse = await fetch(`http://localhost:8080/users/name/${event.authorName}`);
+                const authorResponse = await fetch(`${API_URL}/users/name/${event.authorName}`);
                 const authorData = await authorResponse.json();
 
-                const imageResponse = await fetch(`http://localhost:8080/users/${authorData.id}/image`);
+                const imageResponse = await fetch(`${API_URL}/users/${authorData.id}/image`);
                 const imageBlob = await imageResponse.blob();
                 const imageUrl = URL.createObjectURL(imageBlob);
 
-                const eventImageResponse = await fetch(`http://localhost:8080/events/${event.id}/image`);
+                const eventImageResponse = await fetch(`${API_URL}/events/${event.id}/image`);
                 const eventImageBlob = await eventImageResponse.blob();
                 const eventImageUrl = URL.createObjectURL(eventImageBlob);
 
@@ -44,6 +48,13 @@ const EventosProximos = () => {
         }
     };
 
+    const formattedDate = new Date(data).toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
     const goToTelaEventos = () => {
         navigate('/eventos');
     };
@@ -61,7 +72,13 @@ const EventosProximos = () => {
                                  <Evento 
                                     titulo={evento.title} 
                                     imagem={evento.eventImageUrl} 
-                                    data={evento.date} 
+                                    data={new Date(evento.date).toLocaleString('pt-BR', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })} 
                                     local={evento.location}
                                     organizador={evento.authorName}
                                     totalParticipantes={evento.participantsCount}

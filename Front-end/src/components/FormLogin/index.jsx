@@ -21,6 +21,9 @@ import useUserContext from '../../hooks/useUserContext';
 
 function Form() {
 
+    const API_URL = process.env.VITE_API_URL; // Access the API URL
+
+
     const notifySucess = (mensagem) => {
         toast.success(mensagem, {
             position:"top-right"
@@ -62,7 +65,7 @@ function Form() {
 
     const onSubmitLogin = (email, senha) => {
         
-        axios.post(`http://localhost:8080/users/login?email=${email}&password=${password}`)
+        axios.post(`${API_URL}/users/login?email=${email}&password=${password}`)
         .then(response => {
             const userData = response.data;
             notifySucess("Entrando...");

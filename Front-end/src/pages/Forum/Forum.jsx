@@ -8,8 +8,14 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import dataUser from '../../../usersExplorer.json';
 import {ToastContainer, toast} from 'react-toastify'
+import {
+    getUserImage
+  } from '../../services/userService';
 
 const Forum = () => {
+
+    const API_URL = process.env.VITE_API_URL;
+
     const [posts, setPosts] = useState([]);
     const [addUserState, setAddUserState] = useState({});
     const [curtidas, setCurtidas] = useState([]);
@@ -33,18 +39,36 @@ const Forum = () => {
     
     useEffect(() => {
         fetchPosts();
-    }, []);
+        const loadUserProfile = async () => {
+            try {
+                const imageResponse = await getUserImage(localStorage.getItem('userId')); // Remova o $ que está antes do localStorage
+                if (imageResponse.status === 200) {
+                    const imageBlob = new Blob([imageResponse.data], { type: 'image/jpeg' });
+                    const imageUrl = URL.createObjectURL(imageBlob);
+                    setProfileImage(imageUrl);
+                } else {
+                    throw new Error('No image found');
+                }
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+            }
+        };
+    
+        fetchPosts();
+        loadUserProfile();
+    }, [localStorage.getItem('userId')]);
+
 
     const fetchPosts = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/posts');
+            const response = await axios.get(`${API_URL}/posts`);
             const postData = response.data;
 
             const postsWithAuthorDetails = await Promise.all(postData.map(async (post) => {
-                const authorResponse = await axios.get(`http://localhost:8080/users/${post.authorId}`);
+                const authorResponse = await axios.get(`${API_URL}/users/${post.authorId}`);
                 const authorData = authorResponse.data;
 
-                const imageResponse = await axios.get(`http://localhost:8080/users/${post.authorId}/image`, { responseType: 'blob' });
+                const imageResponse = await axios.get(`${API_URL}/users/${post.authorId}/image`, { responseType: 'blob' });
                 const imageUrl = URL.createObjectURL(imageResponse.data);
 
                 return {
@@ -70,7 +94,7 @@ const Forum = () => {
         try {
             setIsCreating(true);
             const userId = localStorage.getItem('userId');
-            await axios.post(`http://localhost:8080/users/${userId}/posts`, newPost);
+            await axios.post(`${API_URL}/users/${userId}/posts`, newPost);
             setNewPost({ title: '', description: '' });
             handleCloseDialog();
             notifySucess('Post criado com sucesso!');
@@ -125,13 +149,17 @@ const Forum = () => {
             [name]: value
         }));
     };
+    const goToPerfilPage = () => {
+        navigate('/perfil');
+    };
+    const [profileImage, setProfileImage] = useState(null);
     return(
         <div className="min-w-screen min-h-screen bg-[#fbfbfb] flex flex-col">
            <Sidebar/>
            <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
                 <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
+               <img className=" rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8" src={profileImage || 'images/user.png'} alt="Profile" />
             </HeaderHome>
             <div className=" mt-24 md:ml-28 flex flex-col items-center xl:grid xl:grid-cols-3">
                 <div className="w-full flex justify-between items-center xl:col-span-3">
@@ -148,7 +176,7 @@ const Forum = () => {
                         </svg>
                 </div>
                 <div className="hidden xl:flex w-full items-center justify-start ml-10 xl:mt-7 xl:col-span-3">
-                    <img className='mp:w-7 object-cover cursor-pointer mp:mr-8 mm:mr-0 xl:mr-2 xl:w-9 ' src='images/user.png' />
+                    <img className='mp:w-7 rounded-full object-cover cursor-pointer mp:mr-8 mm:mr-0 xl:mr-2 xl:w-9 '  src={profileImage || 'images/user.png'}/>
                     <div className="flex relative items-center w-[40%]">
                         <input 
                             type="text" 

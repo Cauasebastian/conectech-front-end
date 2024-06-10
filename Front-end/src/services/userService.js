@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/users';
-const INTERESTS_API_URL = 'http://localhost:8080/interests';
+const API_URL = process.env.VITE_API_URL; // Access the API URL
+const INTERESTS_API_URL = `${API_URL}/interests`;
 
-const getUserById = (id) => axios.get(`${API_URL}/${id}`);
+const getUserById = (id) => axios.get(`${API_URL}/users/${id}`);
 
 const createInterest = async (interestName) => {
   try {
@@ -17,7 +17,7 @@ const createInterest = async (interestName) => {
 
 const addInterestToUser = async (id, interestName) => {
   try {
-    return await axios.post(`${API_URL}/${id}/interests/${interestName}`);
+    return await axios.post(`${API_URL}/users/${id}/interests/${interestName}`);
   } catch (error) {
     // Verifica se o erro é de status 404
     if (error.response && error.response.status === 404) {
@@ -35,7 +35,7 @@ const addInterestToUser = async (id, interestName) => {
 
 const removeInterestFromUser = async (id, interestName) => {
   try {
-    return await axios.delete(`${API_URL}/${id}/interests/${interestName}`);
+    return await axios.delete(`${API_URL}/users/${id}/interests/${interestName}`);
   } catch (error) {
     console.error("Erro ao remover interesse do usuário:", error);
     throw error;
@@ -44,7 +44,7 @@ const removeInterestFromUser = async (id, interestName) => {
 
 const followUser = async (id, userId) => {
   try {
-    return await axios.post(`${API_URL}/${id}/follow/${userId}`);
+    return await axios.post(`${API_URL}/users/${id}/follow/${userId}`);
   } catch (error) {
     console.error("Erro ao seguir usuário:", error);
     throw error;
@@ -53,7 +53,7 @@ const followUser = async (id, userId) => {
 
 const unfollowUser = async (id, userId) => {
   try {
-    return await axios.delete(`${API_URL}/${id}/unfollow/${userId}`);
+    return await axios.delete(`${API_URL}/users/${id}/unfollow/${userId}`);
   } catch (error) {
     console.error("Erro ao deixar de seguir usuário:", error);
     throw error;
@@ -64,7 +64,7 @@ const uploadUserImage = async (id, imageFile) => {
   const formData = new FormData();
   formData.append('image', imageFile);
   try {
-    return await axios.post(`${API_URL}/${id}/uploadImage`, formData, {
+    return await axios.post(`${API_URL}/users/${id}/uploadImage`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -77,7 +77,7 @@ const uploadUserImage = async (id, imageFile) => {
 
 const getUserImage = async (id) => {
   try {
-    return await axios.get(`${API_URL}/${id}/image`, { responseType: 'arraybuffer' });
+    return await axios.get(`${API_URL}/users/${id}/image`, { responseType: 'arraybuffer' });
   } catch (error) {
     console.error("Erro ao obter imagem do usuário:", error);
     throw error;

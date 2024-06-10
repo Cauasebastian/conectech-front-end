@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 
 const DestaquesForum = () => {
+
+    const API_URL = process.env.VITE_API_URL;
+
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [addUserState, setAddUserState] = useState([]);
@@ -18,14 +21,14 @@ const DestaquesForum = () => {
 
     const fetchPosts = async () => {
         try {
-            const response = await fetch('http://localhost:8080/posts');
+            const response = await fetch(`${API_URL}/posts`);
             const postData = await response.json();
 
             const postsWithAuthorDetails = await Promise.all(postData.map(async (post) => {
-                const authorResponse = await fetch(`http://localhost:8080/users/${post.authorId}`);
+                const authorResponse = await fetch(`${API_URL}/users/${post.authorId}`);
                 const authorData = await authorResponse.json();
 
-                const imageResponse = await fetch(`http://localhost:8080/users/${post.authorId}/image`);
+                const imageResponse = await fetch(`${API_URL}/users/${authorData.id}/image`);
                 const imageBlob = await imageResponse.blob();
                 const imageUrl = URL.createObjectURL(imageBlob);
 
@@ -82,7 +85,8 @@ const DestaquesForum = () => {
                                                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                                              </svg>
                   } 
-                            </div>     
+                            </div>
+                            <p className="col-span-4 text-[12px] mm:text-[13px] sm:text-[15px] md:text-[18px] xl:text-lg 3xl:text-xl">{post.title}</p>
                             <p className="col-span-4 text-[12px] mm:text-[13px] sm:text-[15px] md:text-[18px] xl:text-lg 3xl:text-xl">{post.description}</p>
                             
                             <div className="flex col-span-4 items-center justify-between">
