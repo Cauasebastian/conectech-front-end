@@ -61,7 +61,7 @@ const DestaquesForum = () => {
     };
 
     return (
-        <div className="mp:ml-5 md:ml-28 mt-8 lg:-mt-10 xl:-mt-44 lg:ml-[6.5rem] flex flex-col items-center justify-center overflow-x-hidden">
+        <div className="mp:ml-5 md:ml-28 mt-8 lg:-mt-10 xl:-mt-[24rem] lg:ml-[6.5rem] flex flex-col items-center justify-center overflow-x-hidden">
         <div className="flex w-[95%] font-poppins items-center ml-8 sm:ml-24  ">
                 <p className="font-poppins font-medium mp:text-sm w-[50%] text-base mr-20 mm:mr-28 mg:mr-32 sm:mr-44 lg:mr-52 xl:mr-[17rem] 2xl:mr-[19rem] sm:text-base   2xl:text-lg 3xl:text-xl   sm:-ml-8   text-[#363636]">Veja os destaques no fórum</p>
                 <p className="mp:text-[10px] mm:text-[11px] sm:text-xs  md:mr-3 sm:mr-0 2xl:text-sm 3xl:text-base  text-[#747688] font-poppins cursor-pointer" onClick={goToForum}>Ver mais</p>

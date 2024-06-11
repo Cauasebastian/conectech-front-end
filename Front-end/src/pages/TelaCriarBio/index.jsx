@@ -183,7 +183,6 @@ const TelaCriarBio = () => {
                     </div>
                     <button type="submit" className="conectech-button mp:py-1 mp:mt-6 mp:mb-4 mm:py-2 mm:px-24 sm:py-3 sm:px-28 md:text-lg md:px-32 2xl:px-36 2xl:mt-16">Entrar</button>
                 </form>
-                <div id="imageContainer"></div>
             </div>
             <ToastContainer />
         </>
