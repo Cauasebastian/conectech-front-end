@@ -401,13 +401,10 @@ const Perfil = () => {
         aria-describedby="delete-dialog-description"
       >
         <DialogActions className='flex flex-col bg-[#FFFFFF] gap-4 items-center justify-center'>
-          <p className='text-base text-[#000000] font-poppins font-medium'>Você tem certeza que deseja excluir este post?</p>
-          <div className='flex justify-between w-full'>
+          <p className='text-base text-[#000000] font-poppins font-medium'>Essa funcionalidade no momento está desabilitada pois esta ocasionando erro na aplicação e será corrigida em breve</p>
+          <div className='flex justify-center w-full'>
             <button onClick={handleDeleteDialogClose} className='bg-[#FF0000] text-[#FFFFFF] font-poppins px-4 py-2 rounded-md'>
-              Cancelar
-            </button>
-            <button onClick={handleDeletePost} className='bg-[#4A91A5] text-[#FFFFFF] font-poppins px-4 py-2 rounded-md'>
-              Excluir Post
+              Voltar ao Perfil
             </button>
           </div>
         </DialogActions>
