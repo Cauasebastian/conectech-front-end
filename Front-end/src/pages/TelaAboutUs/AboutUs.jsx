@@ -1,27 +1,54 @@
 import { useNavigate } from "react-router-dom";
-
-
 import Sidebar from "../../components/Sidebar";
 import HeaderHome from "../../components/HeaderHome/HeaderHome";
-
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import { getUserImage } from '../../services/userService';
 
 const TelaAboutUs = () => {
+    const [profileImage, setProfileImage] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const loadUserProfile = async () => {
+            try {
+                const userId = localStorage.getItem('userId');
+                const imageResponse = await getUserImage(userId);
+                if (imageResponse.status === 200) {
+                    const imageBlob = new Blob([imageResponse.data], { type: 'image/jpeg' });
+                    const imageUrl = URL.createObjectURL(imageBlob);
+                    setProfileImage(imageUrl);
+                } else {
+                    throw new Error('No image found');
+                }
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+            }
+        };
+
+        loadUserProfile();
+    }, []);
+
     const goToHomePage = () => {
-        navigate('/home')
-    }
+        navigate('/home');
+    };
+
     const goToPerfilPage = () => {
         navigate('/perfil');
     };
     
-    return(
+    return (
         <>
-           <Sidebar/>
-           <HeaderHome>
+            <Sidebar />
+            <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
-                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png' onClick={goToPerfilPage}/>
-            </HeaderHome>
+                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32 w-40' alt="" />
+                <img  className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8 cursor-pointer z-50" 
+        src={profileImage || 'images/user.png'} 
+        alt="Profile" 
+        onClick={goToPerfilPage} 
+    />              
+               </HeaderHome>
            <div className="mp:ml-24 mt-24 grid grid-cols-3 items-center">
                 <div className="w-full flex justify-between items-center col-span-3">
                     <div className="flex items-center gap-2  xl:ml-10 xl:mt-5 3xl:ml-24 cursor-pointer" onClick={goToHomePage}>

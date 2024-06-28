@@ -186,8 +186,10 @@ const Perfil = () => {
         {/* Logo do CONECTECH */}
         <img src="images/img-logo-pree.png" className="mp:ml-40 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-40 w-40" alt="Logo"  style={{justifySelf: "center"}} />
         {/* Imagem do User Pequena */}
-        <img className=" rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8" src={profileImage || 'images/user.png'} alt="Profile" />
-      </HeaderHome>
+        <img  className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8 cursor-pointer z-50" 
+        src={profileImage || 'images/user.png'} 
+        alt="Profile"  />              
+        </HeaderHome>
       <div className="mp:ml-24 mt-24 flex flex-col items-center">
         <div className="w-full flex justify-between items-center">
           <div className="flex items-center gap-2 xl:ml-10 xl:mt-5 3xl:ml-24 cursor-pointer" onClick={goToHomePage}>
@@ -404,7 +406,7 @@ const Perfil = () => {
           <p className='text-base text-[#000000] font-poppins font-medium'>Essa funcionalidade no momento está desabilitada pois esta ocasionando erro na aplicação e será corrigida em breve</p>
           <div className='flex justify-center w-full'>
             <button onClick={handleDeleteDialogClose} className='bg-[#FF0000] text-[#FFFFFF] font-poppins px-4 py-2 rounded-md'>
-              Voltar ao Perfil
+              Voltar 
             </button>
           </div>
         </DialogActions>

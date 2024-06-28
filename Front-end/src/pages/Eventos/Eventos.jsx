@@ -6,6 +6,7 @@ import HeaderHome from '../../components/HeaderHome/HeaderHome';
 import Evento from "../../components/Evento";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
+import { getUserImage } from '../../services/userService';
 
 const Eventos = () => {
     
@@ -23,6 +24,7 @@ const Eventos = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [isCreating, setIsCreating] = useState(false); // Estado para controlar se o evento está sendo criado
     const navigate = useNavigate();
+    const [profileImage, setProfileImage] = useState(null);
 
     useEffect(() => {
         fetchEventsWithAuthorDetails();
@@ -30,6 +32,22 @@ const Eventos = () => {
         if (interesses) {
             setMeusInteresses(JSON.parse(interesses));
         }
+        const loadUserProfile = async () => {
+            try {
+                const userId = localStorage.getItem('userId');
+                const imageResponse = await getUserImage(userId);
+                if (imageResponse.status === 200) {
+                    const imageBlob = new Blob([imageResponse.data], { type: 'image/jpeg' });
+                    const imageUrl = URL.createObjectURL(imageBlob);
+                    setProfileImage(imageUrl);
+                } else {
+                    throw new Error('No image found');
+                }
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+            }
+        };
+        loadUserProfile();
     }, []);
 
     const fetchEventsWithAuthorDetails = async () => {
@@ -97,8 +115,6 @@ const Eventos = () => {
         }
     };
     
-    
-
     const escolherTipo = (index) => {
         setActiveIndex(index);
     };
@@ -122,6 +138,7 @@ const Eventos = () => {
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
     };
+    
     const goToPerfilPage = () => {
         navigate('/perfil');
     };
@@ -131,8 +148,13 @@ const Eventos = () => {
             <Sidebar />
             <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
-                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png' onClick={goToPerfilPage}/>
+                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32 w-40' alt="" />
+                <img 
+                    className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8 cursor-pointer z-50" 
+                    src={profileImage || 'images/user.png'} 
+                    alt="Profile" 
+                    onClick={goToPerfilPage} 
+                />
             </HeaderHome>
             <div className="mp:ml-4 xl:ml-32 mt-24 flex flex-col items-center w-full">
                 <div className="w-full flex justify-between items-center">

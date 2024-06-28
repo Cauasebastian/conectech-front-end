@@ -1,36 +1,66 @@
-import Sidebar from "../../components/Sidebar"
-import HeaderHome from "../../components/HeaderHome/HeaderHome"
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import data from '../../../events.json'
-import Evento from "../../components/Evento"
+import Sidebar from "../../components/Sidebar";
+import HeaderHome from "../../components/HeaderHome/HeaderHome";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import data from '../../../events.json';
+import Evento from "../../components/Evento";
+import { getUserImage } from "../../services/userService"; // Importe a função getUserImage do seu serviço
 
 const Favoritos = () => {
-    const [meusInteresses, setMeusInteresses] = useState([])
-      useEffect(() => {
+    const [profileImage, setProfileImage] = useState(null);
+    const [meusInteresses, setMeusInteresses] = useState([]);
+
+    useEffect(() => {
         const interesses = localStorage.getItem('meusInteresses');
-        if(interesses){
-            setMeusInteresses(JSON.parse(interesses))
+        if (interesses) {
+            setMeusInteresses(JSON.parse(interesses));
         }
-        
-        
-      }, [])
+    }, []);
+
+    useEffect(() => {
+        const loadUserProfile = async () => {
+            try {
+                const userId = localStorage.getItem('userId');
+                const imageResponse = await getUserImage(userId);
+                if (imageResponse.status === 200) {
+                    const imageBlob = new Blob([imageResponse.data], { type: 'image/jpeg' });
+                    const imageUrl = URL.createObjectURL(imageBlob);
+                    setProfileImage(imageUrl);
+                } else {
+                    throw new Error('No image found');
+                }
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+            }
+        };
+
+        loadUserProfile();
+    }, []);
+
     const [activeIndex, setActiveIndex] = useState(null);
     const escolherTipo = (index) => {
         setActiveIndex(index);
-      };
+    };
+
     const navigate = useNavigate();
     const goToHomePage = () => {
-        navigate('/home')
-    }
-    return(
+        navigate('/home');
+    };
+    const goToPerfilPage = () => {
+        navigate('/perfil');
+    };
+
+    return (
         <div className='w-full min-h-screen overflow-y-hidden flex bg-[#fbfbfb]'>
-            <Sidebar/>
+            <Sidebar />
             <HeaderHome>
                 <img src="images/img-conectech.svg" className='block sm:hidden w-12 h-12 mp:ml-28 mm:ml-36' alt="" />
-                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32  w-40' alt="" />
-                <img className='w-8 object-cover cursor-pointer mp:mt-2  mp:-mr-4 mm:-mr-5 md:-mr-8 lg:mr-14 ' src='images/user.png'/>
-            </HeaderHome>
+                <img src="images/img-logo-pree.png" className='ml-24 mp:w-32 mm:ml-28 hidden sm:block sm:ml-40 md:ml-52 lg:ml-32 w-40' alt="" />
+                <img  className="rounded-full object-cover w-8 h-8 md:w-10 md:h-10 lg:w-14 lg:h-14 3xl:h-18 3xl:w-18 mr-8 cursor-pointer z-50" 
+        src={profileImage || 'images/user.png'} 
+        alt="Profile" 
+        onClick={goToPerfilPage} />              
+               </HeaderHome>
             <div className="mp:ml-24 xl:ml-32 mt-24 flex flex-col items-center">
                 <div className="w-full flex mp:flex-col mp:items-start justify-between items-center">
                     <div className="flex items-center gap-2  xl:ml-3 xl:mt-5 3xl:ml-0 cursor-pointer" onClick={goToHomePage}>
